@@ -1,17 +1,26 @@
 #!/bin/bash
 # 
 # Create an empty plain text file at the current Finder
-# location. File is named "blank.txt".
-# File chosen in following order:
+# location. File is named "blank.txt" or, if a query parameter
+# is given, its value will be used.
+#
+# Destination for file chosen in following order:
 #   1. if a directory is selected, then in that directory
 #   2. if a file is selected, then the same directory as the file
 #   3. if nothing in Finder is selected, then at the Finder window's 
 #      currently open directory
 #   4. if no finder window is open, then on the desktop
-# If there is already a "blank.txt" file in the target directory,
-# then nothing happens.
+# If there is already a file with the same name in the 
+# target directory, then nothing happens.
 
-fname="blank.txt"
+# Get file name from (optional) Alfred query parameter
+fname="{query}"
+len=${#fname}
+if [ $len -eq 0 ];
+then
+	# String is empty, use default.
+	fname="blank.txt"
+fi
 
 # Get path of current Finder window's selected item (AppleScript code; 
 # via here-script).
