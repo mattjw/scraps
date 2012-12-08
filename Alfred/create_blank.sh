@@ -56,7 +56,7 @@ then
 fi
 
 newfile="$path/$fname"
-if [ -e $newfile ]
+if [ -e "$newfile" ]
 then
 	# Eee gad. There's already something there! And it's ALIVE.
 	# Let's get out of here while we still can!
@@ -64,7 +64,7 @@ then
 fi
 
 # Let's create the file!
-touch $newfile
+touch "$newfile"
 
 
 
