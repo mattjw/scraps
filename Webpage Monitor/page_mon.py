@@ -1,3 +1,5 @@
+#!/usr/local/bin/python
+
 # A simple script that tracks URLs for changes. The three properties that the
 # script monitors are described below. 
 #
@@ -73,6 +75,7 @@ except ImportError:
 #
 # Monitoring
 #
+print "STARTING..."
 num_repeats = 0
 while True:
 
