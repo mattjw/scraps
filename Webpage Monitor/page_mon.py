@@ -130,7 +130,7 @@ while True:
                 continue
 
     except IOError, err:
-        print "ERROR:", err
+        print "ERROR [%s]: %s" % ( num_repeats, err )
 
     #
     # Generate report (if necessary)
