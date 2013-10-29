@@ -1,6 +1,5 @@
 import collections
 
-
 class PivotBufferedRowReader( object ):
     """Wraps around a database query and pulls out 'ancillary' rows relative
     to an advancable 'pivot' row, without the need for multiple database
