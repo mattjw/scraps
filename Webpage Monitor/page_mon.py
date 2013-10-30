@@ -75,6 +75,18 @@ except ImportError:
 #
 # Monitoring
 #
+def request_page( url ):
+    """
+    Wrapper for retrieving a web page over HTTP. Adds spoof header info.
+    """
+    req = urllib2.Request( url )
+    req.add_header( 'User-Agent', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/30.0.1599.101 Safari/537.36' )
+    req.add_header( 'Accept-Encoding', 'gzip,deflate,sdch' )
+    req.add_header( 'Accept-Language', 'en-US,en;q=0.8' )
+    req.add_header( 'Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' )
+    resp = urllib2.urlopen( req )
+    return resp
+
 print "STARTING..."
 num_repeats = 0
 while True:
@@ -83,13 +95,16 @@ while True:
     # Prep a change report
     # If `report` ends up being non-empty then we've got a notifiation to send
     report = ""
+    last_url_checked = None
     try:
         #
         # Check for phrase
         for url, phrases in track_phrases.iteritems():
+            last_url_checked = url
+
             culled = list(phrases)
 
-            resp = urllib2.urlopen(url)
+            resp = request_page( url )
             html = resp.read()
 
             for phrase in phrases:
@@ -103,7 +118,9 @@ while True:
         #
         # Check for existing page changes (any change to HTML will trigger)
         for url, orig_digest in track_changes.iteritems():
-            resp = urllib2.urlopen(url)
+            last_url_checked = url
+
+            resp = request_page( url )
             page_html = resp.read()
             page_md5 = hashlib.md5(page_html).hexdigest()
 
@@ -118,10 +135,11 @@ while True:
         #
         # Check if a page has appeared
         for url, was_found in track_existence.iteritems():
+            last_url_checked = url
             if was_found:
                 continue
             try:
-                resp = urllib2.urlopen(url)
+                resp = request_page( url )
                 code = resp.getcode()
                 if code == 200:
                     track_existence[url] = True
@@ -130,7 +148,7 @@ while True:
                 continue
 
     except IOError, err:
-        print "ERROR [%s]: %s" % ( num_repeats, err )
+        print "ERROR [%s]: %s  [url %s]" % ( num_repeats, err, last_url_checked )
 
     #
     # Generate report (if necessary)
