@@ -1,4 +1,8 @@
-## `stdbuf` on OS X
+### Launching a Crawler Process
+
+See `starter.sh`, which launches the example `demo.py` script.
+
+#### `stdbuf` on OS X
 
 Two approaches, both use homebrew:
 
