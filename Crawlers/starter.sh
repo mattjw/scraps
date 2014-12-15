@@ -1,3 +1,5 @@
+#!/bin/bash
+
 nohup stdbuf -eL -oL \
     python demo.py \
     > ./log/stdboth.out 2>&1 \
