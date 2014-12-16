@@ -4,6 +4,10 @@
 # Date:     2014
 # License:  MIT License
 
+# Updates:
+#   Dec 2014:
+#     Simple modification to generalise to any iterator (see: next(...)).
+#     Backwards compatible with database cursors.
 
 import collections
 
@@ -79,7 +83,7 @@ class PivotBufferedRowReader( object ):
             self.__pivot_index = 0
             self.__ancil_index = self.__pivot_index + 1
             
-            self.__pivot_row = self.__cursor.fetchone()
+            self.__pivot_row = next(self.__cursor, None)
             if self.__pivot_row is None:
                 # ...then the cursor's run out of rows to grab
                 return None
@@ -96,7 +100,7 @@ class PivotBufferedRowReader( object ):
                 # This could be reached if, for whatever reason, the user
                 # chose to continuously call advance_pivot (i.e., without
                 # intervening next_ancil calls)
-                self.__pivot_row = self.__cursor.fetchone()
+                self.__pivot_row = next(self.__cursor, None)
                 # note: this could return None
                 
             self.__pivot_index += 1
@@ -139,7 +143,7 @@ class PivotBufferedRowReader( object ):
         #   case of row_diff=1) then we pull an extra row into the buffer.
         
         if len( self.__buffer ) < row_diff:
-            buff_row = self.__cursor.fetchone()
+            buff_row = next(self.__cursor, None)
             
             if buff_row is None:
                 return None
@@ -157,8 +161,9 @@ class PivotBufferedRowReader( object ):
             # recall that this is the NEXT ancil index
         
         return row 
-        
-        
+
+
+
 if __name__=='__main__':
     import sqlite3
     
@@ -267,6 +272,3 @@ if __name__=='__main__':
             next_ancil_row = rdr.next_ancillary()
         
         next_piv_row = rdr.advance_pivot()
-    
-    
-    
