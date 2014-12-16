@@ -4,7 +4,9 @@
 # Date:     2014
 # License:  MIT License
 
+
 import collections
+
 
 class PivotBufferedRowReader( object ):
     """Wraps around a database query and pulls out 'ancillary' rows relative
