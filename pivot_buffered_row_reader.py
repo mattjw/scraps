@@ -1,3 +1,10 @@
+# Author:   Matt J Williams
+#           http://www.mattjw.net
+#           mattjw@mattjw.net
+# Date:     2014
+# License:  MIT License
+
+
 import collections
 
 class PivotBufferedRowReader( object ):
