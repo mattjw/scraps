@@ -4,7 +4,6 @@
 # Date:     2014
 # License:  MIT License
 
-
 import collections
 
 class PivotBufferedRowReader( object ):
