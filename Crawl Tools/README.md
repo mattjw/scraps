@@ -1,6 +1,10 @@
+### Tenacious Querying
+
+xxx
+
 ### Launching a Crawler Process
 
-See `starter.sh`, which launches the example `demo.py` script.
+See `crawl_starter.sh`, which launches the example `crawl_starter_demo.py` script.
 
 #### `stdbuf` on OS X
 
