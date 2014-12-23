@@ -1,6 +1,6 @@
 ### Tenacious Querying
 
-xxx
+A decorator that adds tenacious HTTP querying to a function. See `tenacious_querying.py` for details and usage information.
 
 ### Launching a Crawler Process
 
