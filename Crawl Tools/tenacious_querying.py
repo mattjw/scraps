@@ -22,12 +22,14 @@ import urllib3
 A decorator for tenacious HTTP querying.
 
 Wrap a function in this decorator to have it automatically re-executed in case
-of an HTTP error. Server-hammering is avoided by using progressive backoff.
+of an HTTP error. The decorator implements progressive backoff to avoid
+hammering the server.
 
-Built for the requests library. See: http://python-requests.org
+Built for HTTP requests issued via the `requests` library.
+See: http://python-requests.org
 
 The function being decorated should issue an HTTP query via the requests
-library, and should return the corresponding requests.Response object.
+library, and should return the corresponding `requests.Response` object.
 """
 
 
@@ -45,9 +47,9 @@ class tenacious(object):
     Decorate a function that issues and returns an HTTP query via the requests
     library. Querying is carried out tenaciously; i.e., if the function fails
     due to a transient HTTP issue, it will backoff and keep tryin. The
-    decorated functin will only return the result of a successful query.
+    decorated function will only return the result of a successful query.
 
-    The query time (i.e., HTTP roundtrip duration) is included in the backoff
+    The query time (i.e., HTTP roundtrip) is included in the backoff
     duration.
 
     The decorator uses reasonable defaults are provided for all parameters, but 
