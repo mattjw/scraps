@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en">
+
+
+<head>
+
+<!---->
+<!-- LIBRARIES -->
+<!---->
+
+<script type="text/javascript" src="./lib/d3.js" charset="utf-8"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script>
+<script type="text/javascript" src="./lib/jquery-1.11.2.min.js" charset="utf-8"></script>
+
+
+<!---->
+<!-- VIZ STYLING -->
+<!---->
+<style>
+
+#regions_labels text {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 16px;
+  text-anchor: start;  /* anchor is at bottom-left of first character */
+  color: #911;
+  font-weight: bold;
+}
+
+#states {
+  fill: none;    /* state fill colour, or 'none' */
+  stroke: #999;  /* state outlines */
+  stroke-linejoin: round;
+  stroke-width: 0.75;
+}
+
+#regions {
+  fill: none;
+  stroke: none;  /* outlines for CBSA regions. #911 or none */
+}
+
+#legend text {
+  font-size: 16px;
+  font-family: Arial;
+  font-weight: bold;
+}
+
+</style>
+
+</head>
+
+
+<body>
+<!---->
+<!-- CHART ELEMENT -->
+<!---->
+<div id="chart">
+</div>
+
+
+<!---->
+<!-- GENERATE VISUALISATION -->
+<!---->
+<script>
+
+var data; // loaded asynchronously
+
+var width = 1000;
+var height = 500;
+
+var svg = d3.select("#chart")
+  .append("svg:svg")
+  .attr("width", width)
+  .attr("height", height);
+
+
+//
+// set up path and proejction
+var projection = d3.geo.equirectangular()
+  .scale(900)
+  .center([-95.0,39.0])  // GPS coord of centre of USA (roughly). this will be centered in the chart's viewport (after translation is done (see next line))
+  .translate([width / 2, height / 2]);
+    // https://github.com/mbostock/d3/wiki/Geo-Projections
+var path = d3.geo.path()
+  .projection(projection);
+
+//
+// add states for outline
+// (see: http://bl.ocks.org/mbostock/4060606)
+var states = svg.append("g")
+    .attr("id", "states");
+
+d3.json("./dat/us-states.json", function(json) {
+  // create paths for each state using the json data
+  // and the geo path generator to draw the shapes
+  features = json.features;
+  features = $.grep(features, function(feat, indx)
+    {
+      discards = ["Hawaii", "Alaska"];
+      return $.inArray(feat.properties.NAME, discards) == -1;
+    }
+    );
+
+  states.selectAll("path")
+      .data(features)
+    .enter().append("path")
+      .attr("d", path);
+});
+
+
+//
+// create a container for regions (i.e., CBSAs)
+var regions = svg.append("g")   // container for polygons
+    .attr("id", "regions")
+    .attr("class", "Blues");
+
+var regions_labels = svg.append("g")   // container for labels
+    .attr("id", "regions_labels");
+
+//
+// quantization function to map the variate to colour bands
+// (example: http://bl.ocks.org/mbostock/4060606)
+var colour_mapper = d3.scale.pow().exponent(0.5).exponent(0.4)
+  .domain([0,5000])
+  .range(["hsl(240, 100%, 90%)",
+          "hsl(220, 100%, 30%)",
+          ]);
+// the mapper can also interpolate between colours (see above) and multiple
+// slices (not shown) (for quasi-linear scaling)
+// example:
+//   console.log(colour_mapper(400))
+//     => #76b4d9
+
+
+//
+// load data and build graphics objects on the map
+d3.json("./dat/regions_geojson__mapshaped.json", function(json) {
+  // create paths for each region using the json data
+  // and the geo path generator to draw the shapes
+
+  //
+  // paint region polygon elements
+  regions.selectAll("path")
+      .data(json.features)
+    .enter().append("path")
+      .attr("fill", 
+        function(d)
+        {
+          var colcode = colour_mapper(d.properties.value);
+          return colcode;
+        })
+      .attr("d", path);
+
+  //
+  // add text labels (region name) to regions
+  regions_labels.selectAll("text")
+    .data(json.features)
+    .enter()
+    .append("svg:text")
+    .text(function(d){
+        return d.properties.name_abbr;
+    })
+    .attr("x", function(d){
+        right = path.bounds(d)[1][0]+2.0;
+
+        // hard-code specific adjustments to some labels
+        if(d.properties.name_abbr=="P-C-W"){
+          right += 2;
+        }
+
+        if(d.properties.name_abbr=="A-RR"){
+          right += -6;
+        }
+
+        return right;
+        // [​[left, bottom], [right, top]​]
+        // API reference:
+        //   https://github.com/mbostock/d3/wiki/Geo-Paths#bounds
+        //   https://github.com/mbostock/d3/wiki/Geo-Paths#path_bounds
+        //return path.centroid(d)[0]+30.0;
+    })
+    .attr("y", function(d){
+        cent = path.centroid(d)[1];
+
+        // hard-code specific adjustments to some labels
+        if($.inArray(d.properties.name_abbr, ["P-C-W", "W-A-A", "A-SS-R", "C-N-E", "M-SP-B"]) != -1) {
+          cent += 8;
+        }
+
+        if($.inArray(d.properties.name_abbr, ["SF-O-H", "P-M-S"]) != -1) {
+          cent += 2;
+        }
+
+        if(d.properties.name_abbr=="A-RR"){
+          cent += -10;
+        }
+
+        return cent;
+    })
+    .attr("text-anchor","middle")
+    .attr('font-size','6pt');
+});
+
+
+//
+// add a legend
+domain = [0, 1000, 2000, 3000, 4000, 5000]
+
+// container for the legend
+// create a container for regions (i.e., CBSAs)
+
+var container = svg.append("g")   // all elements created for legend are inside this container
+  .attr("id", "legend")
+
+var legend = container.selectAll("g.legend")
+  .data(domain)
+  .enter().append("g")
+  .attr("class", "legend_row");
+
+var legend_offset_x = 20, legend_offset_y = 370;  // where the legend should start
+var ls_w = 20, ls_h = 20;
+
+container.append("text")
+  .attr("x", legend_offset_x)
+  .attr("y", legend_offset_y-4)
+  .attr("height", ls_h)
+  .text("Num. Active Users")
+
+legend.append("rect")
+  .attr("x", legend_offset_x)
+  .attr("y", function(d, i){ return legend_offset_y + ((2+i)*ls_h) - 2*ls_h;})
+  .attr("width", ls_w)
+  .attr("height", ls_h)
+  .style("fill", function(d, i) { return colour_mapper(d); })
+  .style("opacity", 0.8);
+
+legend.append("text")
+  .attr("x", legend_offset_x + ls_w + 5)
+  .attr("y", function(d, i){ return legend_offset_y + ((2+i)*ls_h) - ls_h - 4;})
+  .text(function(d, i){ return d; });
+
+
+/*
+most useful references
+
+swiss cantons using topo json. including text labels. full working example.
+http://bl.ocks.org/mbostock/raw/4207744/
+
+choropleth for us states. and blues colouring. quantization. geojson.
+http://synthesis.sbecker.net/articles/2012/07/18/learning-d3-part-7-choropleth-maps
+
+topojson equivalent of above.
+http://bl.ocks.org/mbostock/4060606
+*/
+
+</script>
+
+
+</body>
+</html>
