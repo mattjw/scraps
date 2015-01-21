@@ -172,79 +172,22 @@ d3.json("./dat/regions_geojson__mapshaped.json", function(json) {
     })
     .attr("x", function(d){
         right = path.bounds(d)[1][0]+2.0;
-
-        // hard-code specific adjustments to some labels
-        if(d.properties.name_abbr=="P-C-W"){
-          right += 2;
-        }
-
-        if(d.properties.name_abbr=="A-RR"){
-          right += -73;
-        }
-
-        if(d.properties.name_abbr=="SD-C"){
-          right += -68;
-        }
-
-        if(d.properties.name_abbr=="H-TW-SL"){
-          right += -4;
-        }
-
-        if(d.properties.name_abbr=="M-FL-WPB"){
-          right += -95;
-        }
-
-        if(d.properties.name_abbr=="W-A-A"){
-          right += -6;
-        }
-
-        return right;
         // [​[left, bottom], [right, top]​]
         // API reference:
         //   https://github.com/mbostock/d3/wiki/Geo-Paths#bounds
         //   https://github.com/mbostock/d3/wiki/Geo-Paths#path_bounds
-        //return path.centroid(d)[0]+30.0;
+        // hard-code specific adjustments to some labels
+        if(d.properties.name_abbr=="P-C-W"){
+          right += 2;
+        }
+        return right;
     })
     .attr("y", function(d){
         cent = path.centroid(d)[1];
-
         // hard-code specific adjustments to some labels
         if($.inArray(d.properties.name_abbr, ["H-TW-SL", "P-C-W", "A-SS-R", "C-N-E", "M-SP-B"]) != -1) {
           cent += 8;
         }
-
-        if($.inArray(d.properties.name_abbr, ["H-TW-SL"]) != -1) {
-          cent += 9;
-        }
-
-        if($.inArray(d.properties.name_abbr, ["NY-N-JC"]) != -1) {
-          cent += 4;
-        }
-
-        if($.inArray(d.properties.name_abbr, ["P-C-W"]) != -1) {
-          cent += 8;
-        }
-
-        if($.inArray(d.properties.name_abbr, ["SF-O-H", "P-M-S"]) != -1) {
-          cent += 2;
-        }
-
-        if(d.properties.name_abbr=="A-RR"){
-          cent += +6;
-        }
-
-        if(d.properties.name_abbr=="SD-C"){
-          cent += 26;
-        }
-
-        if(d.properties.name_abbr=="W-A-A"){
-          cent += 22;
-        }
-
-        if(d.properties.name_abbr=="M-FL-WPB"){
-          cent += 35;
-        }
-
         return cent;
     })
     .attr("text-anchor","middle")
@@ -298,20 +241,6 @@ container.append("text")
   .attr("height", ls_h)
   .text(domain.slice(-1)[0])
 
-
-/*
-most useful references
-
-swiss cantons using topo json. including text labels. full working example.
-http://bl.ocks.org/mbostock/raw/4207744/
-
-choropleth for us states. and blues colouring. quantization. geojson.
-http://synthesis.sbecker.net/articles/2012/07/18/learning-d3-part-7-choropleth-maps
-
-topojson equivalent of above.
-http://bl.ocks.org/mbostock/4060606
-
-*/
 
 </script>
 

@@ -162,39 +162,22 @@ d3.json("./dat/regions_geojson__mapshaped.json", function(json) {
     })
     .attr("x", function(d){
         right = path.bounds(d)[1][0]+2.0;
-
-        // hard-code specific adjustments to some labels
-        if(d.properties.name_abbr=="P-C-W"){
-          right += 2;
-        }
-
-        if(d.properties.name_abbr=="A-RR"){
-          right += -6;
-        }
-
-        return right;
         // [​[left, bottom], [right, top]​]
         // API reference:
         //   https://github.com/mbostock/d3/wiki/Geo-Paths#bounds
         //   https://github.com/mbostock/d3/wiki/Geo-Paths#path_bounds
-        //return path.centroid(d)[0]+30.0;
+        // hard-code specific adjustments to some labels
+        if(d.properties.name_abbr=="P-C-W"){
+          right += 2;
+        }
+        return right;
     })
     .attr("y", function(d){
         cent = path.centroid(d)[1];
-
         // hard-code specific adjustments to some labels
-        if($.inArray(d.properties.name_abbr, ["P-C-W", "W-A-A", "A-SS-R", "C-N-E", "M-SP-B"]) != -1) {
+        if($.inArray(d.properties.name_abbr, ["H-TW-SL", "P-C-W", "A-SS-R", "C-N-E", "M-SP-B"]) != -1) {
           cent += 8;
         }
-
-        if($.inArray(d.properties.name_abbr, ["SF-O-H", "P-M-S"]) != -1) {
-          cent += 2;
-        }
-
-        if(d.properties.name_abbr=="A-RR"){
-          cent += -10;
-        }
-
         return cent;
     })
     .attr("text-anchor","middle")
@@ -239,19 +222,6 @@ legend.append("text")
   .attr("y", function(d, i){ return legend_offset_y + ((2+i)*ls_h) - ls_h - 4;})
   .text(function(d, i){ return d; });
 
-
-/*
-most useful references
-
-swiss cantons using topo json. including text labels. full working example.
-http://bl.ocks.org/mbostock/raw/4207744/
-
-choropleth for us states. and blues colouring. quantization. geojson.
-http://synthesis.sbecker.net/articles/2012/07/18/learning-d3-part-7-choropleth-maps
-
-topojson equivalent of above.
-http://bl.ocks.org/mbostock/4060606
-*/
 
 </script>
 
