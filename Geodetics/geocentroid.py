@@ -187,7 +187,14 @@ def centroid_sphere(longlat_pairs):
 
 def centroid_wgs84(longlat_pairs):
     """
-    ~
+    Compute accurate centroid of a set of geodetic coordinates (long-lat pairs)
+    via Cartesian space while modelling Earth as a WGS-84 ellipsoid.
+
+    :Params:
+    `longlat_pairs`: A sequence of points as (long, lat) coordinates.
+
+    :Returns:
+    Centroid of `longlat_pairs`, as long-lat pair.
     """
     import pysatel
     # altitude:
