@@ -5,19 +5,6 @@
 # License:  MIT License
 #           http://opensource.org/licenses/MIT
 
-
-__author__ = "Matt J Williams"
-__author_email__ = "mattjw@mattjw.net"
-__license__ = "MIT"
-__copyright__ = "Copyright (c) 2014 Matt J Williams"
-
-
-import time
-
-import requests
-import urllib3
-
-
 """
 A decorator for tenacious HTTP querying.
 
@@ -31,6 +18,17 @@ See: http://python-requests.org
 The function being decorated should issue an HTTP query via the requests
 library, and should return the corresponding `requests.Response` object.
 """
+
+__author__ = "Matt J Williams"
+__author_email__ = "mattjw@mattjw.net"
+__license__ = "MIT"
+__copyright__ = "Copyright (c) 2014 Matt J Williams"
+
+
+import time
+
+import requests
+import urllib3
 
 
 DEFAULT_RETRY_STATUS_CODES = [429, 502, 503]

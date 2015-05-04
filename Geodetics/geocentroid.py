@@ -278,6 +278,19 @@ if __name__ == "__main__":
     import geopy.distance
 
 
+    from pyproj import Proj, transform
+    p_geodetic = Proj(proj='latlong')
+    p_flat = Proj('+init=EPSG:27700')  # uk OS
+
+    w = 30000
+    x = 0.0; y = 0.0; print transform(p_flat, p_geodetic, x, y)
+    x = w; y = 0.0; print transform(p_flat, p_geodetic, x, y)
+    x = 0; y = w; print transform(p_flat, p_geodetic, x, y)
+    x = w; y = w; print transform(p_flat, p_geodetic, x, y)
+    print "dist from cent", (2.0 * w**2.0)**(0.5)
+
+    exit()
+
 
     def __dist_great_circle(loc1, loc2):
         """
