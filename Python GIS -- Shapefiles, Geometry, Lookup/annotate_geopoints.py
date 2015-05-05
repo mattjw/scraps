@@ -1,7 +1,9 @@
-# Matt J Williams, 2015
-# http://mattjw.net
-# mattjw@mattjw.net
-
+# Author:   Matt J Williams
+#           http://www.mattjw.net
+#           mattjw@mattjw.net
+# Date:     2015
+# License:  MIT License
+#           http://opensource.org/licenses/MIT
 
 """
 Annotate a list of geographic locations (as latitudes and longitudes) with
@@ -31,6 +33,11 @@ belongs to (REGION SHAPES).
 #   contains_point(point)
 #     Returns polygons that contain point
 #https://pysal.readthedocs.org/en/latest/library/cg/locators.html
+
+__author__ = "Matt J Williams"
+__author_email__ = "mattjw@mattjw.net"
+__license__ = "MIT"
+__copyright__ = "Copyright (c) 2015 Matt J Williams"
 
 
 import collections
