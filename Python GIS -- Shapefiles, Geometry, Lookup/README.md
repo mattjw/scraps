@@ -17,7 +17,7 @@ This code solves these two problems. It combines shapefile shape geometry and re
 See ``shapefile_tools.py` for usage.
 
 
-## Annotating geopoints
+## Annotating Geopoints
 
 Scenario: You have a CSV file where each row represents a geographic point, with some additional information on that location. For example, this might be a CSV file of Foursquare venues, including their venue name, ID, and longitude and latitude. You want to extend this CSV with some additional information about the region (ward, city, state, constituency, etc.) that each geopoint belongs to. E.g., annotate each Foursquare venue with some demographic information about the electoral ward it belongs to.
 
