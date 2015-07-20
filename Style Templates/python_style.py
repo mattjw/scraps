@@ -117,6 +117,8 @@ def module_level_function(param1, param2=None, *args, **kwargs):
         raise ValueError('param1 may not be equal to param2')
     return True
 
+def main():
+    pass
 
 if __name__ == "__main__":
-    pass
+    main()
