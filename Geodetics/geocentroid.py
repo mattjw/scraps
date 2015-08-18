@@ -47,7 +47,7 @@ follows:
  4. centroid_geodetic_mean:
     Takes the mean of the spherical coordiantes. Oblivious to the shape of the
     Earth. Very large errors introduced for sets that are scattered around the
-    international date line, as this method is oblivious to the true distance
+    international date line, as this method is unaware of the true distance
     between longitude +179.0 vs longitude -179.0.
 
 Conventions used in this module are as follows...
@@ -60,7 +60,7 @@ Units are degrees.
 (0,0)  = prime meridian at the equator
 (0,90) = north pole
 
-radius of earth r
+Radius of earth: r
 
 Euclidian space embedding ['cartesian']:
 We model the Earth as a sphere inscribed in a cuboid.
@@ -424,20 +424,19 @@ if __name__ == "__main__":
         (89.0, 0.0),
         ])
 
-    # summary:
+    # Summary:
     #
     # wrt finding the center of minimum distance...
     # * Our approach always minimises the average distance better than
     #   the naive centroid method (average the spherical coords)
-    #
-    # * The naive centroid approach is inconsistent when dealing with the 
-    #   international date line. Our approach is consistent. 
+    # * The naive centroid approach is inconsistent when dealing with the
+    #   international date line. Our approach is consistent.
     #   Points over any region of the earth are computed correctly, regardless
     #   of IDL.
 
-    # useful resources:
+    # Useful resources:
     #
-    # excellent discussion of the meaning of 'centroid' for points, polygons,
+    # Excellent discussion of the meaning of 'centroid' for points, polygons,
     # etc.:
     # http://gis.stackexchange.com/questions/22739/how-to-find-the-center-of-geometry-of-an-object/22744#22744
     # 
