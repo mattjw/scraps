@@ -21,9 +21,6 @@ rprefix="~/Research/stnets/stinfoprop/"  # remote dir fpath
 
 #
 # dirs to copy
-#push=("datasets/dat_flightsFAA/" "datasets/dat_underground/")
-#pull=("out_viz/" "dat_experiments/" "out_plots/")
-
 # list of local directories to push, relative to `lprefix`
 push=(".")
 
