@@ -15,6 +15,8 @@ Preferred style:
     http://sphinxcontrib-napoleon.readthedocs.org/en/latest/example_google.html
 
 Other resources:
+    * Sphinx reStructuredText primer:
+        http://sphinx-doc.org/rest.html
     Google-style ReST docstrings Template:
         http://sphinxcontrib-napoleon.readthedocs.org/en/latest/example_google.html
     Sphinx Napoleon -- AutoDoc-able Google-like docstrings:
@@ -25,6 +27,10 @@ Other resources:
         http://google-styleguide.googlecode.com/svn/trunk/pyguide.html
     PEP 8:
         https://www.python.org/dev/peps/pep-0008/
+    NumPy Style Doc docstrings (via sphinx-napoleon):
+        http://sphinxcontrib-napoleon.readthedocs.org/en/latest/example_numpy.html
+
+---
 """
 
 __author__ = "Matt J Williams"
