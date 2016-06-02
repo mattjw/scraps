@@ -1,0 +1,22 @@
+
+
+%% Packages
+
+\usepackage{xcolor}
+
+
+%% Tex
+
+\newif\ifcomment
+%% Comment out below line to disable comments
+\commenttrue
+
+\ifcomment
+	\newcommand\bob[1]{\textbf{\textcolor{orange}{Bob: #1}}}
+	\newcommand\matt[1]{\textbf{\textcolor{blue}{Matt: #1}}}
+	\newcommand\alice[1]{\textbf{\textcolor{red}{Alice: #1}}}
+\else
+	\newcommand\bob[1]{}
+	\newcommand\matt[1]{}{
+	\newcommand\alice[1]{}
+\fi

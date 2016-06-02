@@ -1,0 +1,1 @@
+find . -type f -name "./dat/*.gz" -print0 | xargs -0 -I{} tar xf {} -C ./dat_uncomp

@@ -38,6 +38,7 @@ to first localise to UTC (or any other time zone that does not adjust for DST).
 
 from collections import OrderedDict
 from datetime import datetime, timedelta
+import fractions
 
 
 def dt_floor(dt, magnitude='day'):
@@ -294,6 +295,75 @@ def discretise(rows, min_dt, max_dt, bucket_width,
     return buckets
 
 
+def discretise_nondisjoint(rows, min_dt, max_dt, bucket_width, increment,
+               func_start=None, func_end=None, cut_oob=False):
+    """
+    A version of `discretise` where overlapping windows are permitted.
+    Parameters are the same as `discretise`, with following clarifications
+    * `bucket_width` and `increment` are both timedelta objects.
+    * `increment` specifies the distance between the start times of two
+      consecutive windows.
+    * the overlap between two consecutive windows is therefore given by
+      `bucket_width - increment`.
+    """
+    assert increment <= bucket_width
+    assert increment > timedelta()
+    assert bucket_width > timedelta()
+
+    if func_start is None:
+        func_start = lambda row: row[0]
+    if func_end is None:
+        func_end = lambda row: row[1]
+
+    #
+    # currently only supports EVENTS (i.e., zero-duration intervals)
+    for row in rows:
+        assert (func_end(row) - func_start(row)).total_seconds() == 0
+
+    #
+    # basic case
+    if increment == bucket_width:
+        return discretise(rows=rows, min_dt=min_dt, max_dt=max_dt,
+            bucket_width=bucket_width, func_start=func_start,
+            func_end=func_end, cut_oob=cut_oob)
+
+    # for now, we'll do this lazily, and just build on `discretise`
+    # this approach is bad news if the gcd of the two times is very small
+    # it can mean that we end up with a very long list
+    #
+    # approach:
+    # we generate a bunch of (djsoint) "mini" buckets, which we then aggregate
+    # in an overlapping manner
+
+    divisor_secs = fractions.gcd(bucket_width.total_seconds(), increment.total_seconds())
+    mini_bucket_width = timedelta(seconds=divisor_secs)
+    mini_bucksnaps = discretise(
+        rows=rows, min_dt=min_dt, max_dt=max_dt,
+        bucket_width=mini_bucket_width,
+        func_start=func_start, func_end=func_end, cut_oob=cut_oob)
+
+    num_compose_bucks = bucket_width.total_seconds() // mini_bucket_width.total_seconds()
+        # number of mini-windows that need to be aggregated to make a
+        # macro window
+    assert num_compose_bucks >= 1
+    assert num_compose_bucks == int(num_compose_bucks)
+    num_compose_bucks = int(num_compose_bucks)
+
+    # Now we have the setup for the next step...
+    # aggr_num: number of consecutive buckets we compose
+    # mini_bucksnaps: smaller disjoint buckets
+
+    bucksnaps_out = OrderedDict()
+    items = mini_bucksnaps.items()
+    for i in xrange(len(items)-num_compose_bucks):
+        dt_start = items[i][0]
+        window = []
+        for j in xrange(num_compose_bucks):
+            window.extend(items[i+j][1])
+        bucksnaps_out[dt_start] = window
+    return bucksnaps_out
+
+
 if __name__ == "__main__":
     import random
 
@@ -379,7 +449,7 @@ if __name__ == "__main__":
     # Example 3
     #
 
-    print "\nEXAMPLES 3 -- ZERO-DURATION INTERVALS"
+    print "\nEXAMPLE 3 -- ZERO-DURATION INTERVALS"
     points = [datetime(2015, 2, 3, 0,  0), 
               datetime(2015, 2, 3, 11, 0),
               datetime(2015, 2, 3, 13, 30),
@@ -399,3 +469,30 @@ if __name__ == "__main__":
         func_start=lambda r: r[0], func_end=lambda r: r[1])
 
     demo(rows, buckets, width)
+
+    #
+    #
+    # Example 4
+    #
+
+    print "\nEXAMPLE 4 -- OVERLAPPING WINDOWS"
+    points = []
+    for add_hours in xrange(0, 48, 2):
+        points.append(datetime(2015, 2, 3, 0, 0) + timedelta(hours=add_hours))
+    rows = [(p, p, object()) for p in points]
+
+    origin = datetime(2015, 2, 2, 0, 0)
+    fin = datetime(2015, 2, 7, 0, 0)
+
+    width = timedelta(hours=24)
+    increment = timedelta(hours=6)
+
+    bucksnaps = discretise_nondisjoint(rows, origin, fin, width, 
+        increment=increment,
+        cut_oob=True,
+        func_start=lambda r: r[0], func_end=lambda r: r[1])
+
+    for dt, rows in bucksnaps.iteritems():
+        print dt, "to", dt + width
+        for row in rows:
+            print "\t", row[0], '  ', row[1], '  ', row[2]
