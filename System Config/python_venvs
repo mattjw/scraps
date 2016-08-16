@@ -1,0 +1,6 @@
+TO DO
+
+* install pip
+* install virtualenv
+* create a default venv
+* pip install set of essential packages, inc.: numpy scipy sh networkx functool32 dateutil pytz matplotlib ...
