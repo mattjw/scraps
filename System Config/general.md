@@ -86,13 +86,58 @@ pip install pyproj cartopy
 
 ## OS X apps
 
-* DropBox.
-* Nylas. Mail client.
-* MOOM. Window manager.
-* TotalSpaces2. Screen manager
-* Alfred. Spotlight replacement.
-* MacDown. Markdown editor.
-* iStat Menus.
-* Caffeine. Anti-sleep.
-* Base. sqlite database explorer.
-* Spotify.
+```
+Android SDK
+Android Studio
+Alfred 2 (*)
+Base (sqlite explorer) (*)
+Caffeine (anti-sleep)
+Chicken of the VNC (VNC client)
+Cyberduck (file transfer client)
+DropBox
+DaisyDisk (*)
+Eclipse Juno
+Eclipse Scala IDE
+EverNote
+Gephi 0.8
+Gephi 0.9
+Gimp
+git
+Graphviz
+HDFView
+homebrew
+Handbrake (video conversion)
+Inkscape
+iStat Menus (*)
+Java JDK
+Kaleidoscope (GUI diff) (*)
+Karabiner
+Keynote (*)
+MacDown (Markdown editor; not Mou)
+MacTex (2016; comes with LaTeXiT)
+Moom (window manager) (*)
+Mousepose (not OmniDazzle) (*)
+Name Mangler (*)
+Octave
+python-igraph
+Skim
+OpenOffice
+Postgres
+PostGIS
+Postbox (*)
+QGIS
+R
+RStudio
+Sip (colour picker)
+Spotify
+Sublime Text 3
+Synergy
+TextMate 2
+TotalSpaces2 (screen manager) (*)
+Transmission (BitTorrent client)
+Trim Enabler
+VirtualBox
+Weka (data mining suite)
+Xcode
+Zotero
+```
