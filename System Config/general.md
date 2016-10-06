@@ -141,3 +141,5 @@ Weka (data mining suite)
 Xcode
 Zotero
 ```
+
+`(*)` indicates software that there is no free option for this software. Under this definition, freemium (e.g., Dropbox) is considered 'free', whereas anything only offers a finite trial period is 'not free'.
