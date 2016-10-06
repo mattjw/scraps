@@ -306,6 +306,23 @@ def discretise_nondisjoint(rows, min_dt, max_dt, bucket_width, increment,
     * the overlap between two consecutive windows is therefore given by
       `bucket_width - increment`.
     """
+    bucksnaps_out = OrderedDict()
+    for dt, window in discretise_nondisjoint_generator(rows=rows,
+        min_dt=min_dt, max_dt=max_dt, bucket_width=bucket_width,
+        increment=increment,
+        func_start=func_start, func_end=func_end, cut_oob=cut_oob):
+        bucksnaps_out[dt] = window
+    return bucksnaps_out    
+
+
+def discretise_nondisjoint_generator(rows, min_dt, max_dt, bucket_width, increment,
+               func_start=None, func_end=None, cut_oob=False):
+    """
+    Generator version of `discretise_nondisjoint`.
+    `discretise_nondisjoint_generator` Yields (datetime, bucket) pairs. Whereas
+    `discretise_nondisjoint` returns a concrete OrderedDict.
+    The generator version allows more-efficient use of memory.
+    """
     assert increment <= bucket_width
     assert increment > timedelta()
     assert bucket_width > timedelta()
@@ -323,9 +340,14 @@ def discretise_nondisjoint(rows, min_dt, max_dt, bucket_width, increment,
     #
     # basic case
     if increment == bucket_width:
-        return discretise(rows=rows, min_dt=min_dt, max_dt=max_dt,
+        bucksnaps = discretise(rows=rows, min_dt=min_dt, max_dt=max_dt,
             bucket_width=bucket_width, func_start=func_start,
             func_end=func_end, cut_oob=cut_oob)
+        for item in bucksnaps.iteritems():
+            yield item
+        ##return discretise(rows=rows, min_dt=min_dt, max_dt=max_dt,
+        ##    bucket_width=bucket_width, func_start=func_start,
+        ##    func_end=func_end, cut_oob=cut_oob)
 
     # for now, we'll do this lazily, and just build on `discretise`
     # this approach is bad news if the gcd of the two times is very small
@@ -353,15 +375,127 @@ def discretise_nondisjoint(rows, min_dt, max_dt, bucket_width, increment,
     # aggr_num: number of consecutive buckets we compose
     # mini_bucksnaps: smaller disjoint buckets
 
-    bucksnaps_out = OrderedDict()
+    ##bucksnaps_out = OrderedDict()
     items = mini_bucksnaps.items()
     for i in xrange(len(items)-num_compose_bucks):
         dt_start = items[i][0]
         window = []
         for j in xrange(num_compose_bucks):
             window.extend(items[i+j][1])
-        bucksnaps_out[dt_start] = window
-    return bucksnaps_out
+        yield dt_start, window
+        ##bucksnaps_out[dt_start] = window
+    ##return bucksnaps_out
+
+
+def discretise_generic(rows, min_dt, max_dt, bucket_width, increment,
+               func_start=None, func_end=None, cut_oob=False):
+    """
+    A generic and efficient version of `discretise_nondisjoint`. Yields 
+    "bucket snapshot" (bucksnaps) pairs. Each pair represents a particular time window:
+        window start datetime, list of samples.
+    Much more efficient than all other implementations.
+        
+    CURRENT LIMITATION:
+    Does NOT permit "rows" to be an iterator. Must be concrete list. However, with a
+    buffer-and-lookahead class, this is a possible improvement.
+    
+    TO DO:
+    This function will replace all discretisation functions.
+    """
+    assert increment <= bucket_width
+    assert increment > timedelta()
+    assert bucket_width > timedelta()
+
+    if func_start is None:
+        func_start = lambda row: row[0]
+    if func_end is None:
+        func_end = lambda row: row[1]
+        
+    assert all(func_start(rows[i]) <= func_start(rows[i+1]) for i in xrange(len(rows) - 1)), "must be sorted"
+        # this requires `rows` as concrete list rather than iterator
+    
+    #
+    # currently only supports EVENTS (i.e., zero-duration intervals)
+    for row in rows:
+        assert (func_end(row) - func_start(row)).total_seconds() == 0
+          
+    #
+    # write as class for simplicity
+    class Wrapper(object):
+        # i_right = None means "take everything after i_left"
+        # i_left = None means nothing left to take"
+        # rows[i_left:i_right] are the contents of the window
+        # NOT inclusive at i_right
+        
+        def __init__(self):
+            self.win_left = min_dt
+            self.win_right = min_dt + bucket_width
+            self.N = len(rows)
+            if self.N == 0:
+                self.i_left = 0
+                self.i_right = -1
+            else:
+                self.i_left = 0
+                self.i_right = -1
+            self.update_buffer_indices()
+        
+        def buffer_right_fill(self):
+            # fill the buffer with more values from the right
+            while True:
+                #print 'N=', self.N, '   i_right=', self.i_right
+                if (self.i_right+1) >= self.N:
+                    break
+                elif func_start(rows[self.i_right+1]) < self.win_right:
+                    self.i_right += 1
+                else:
+                    break
+                        
+        def buffer_left_empty(self):
+            # remove values from the left
+            while True:
+                #print 'N=', self.N, '   i_left=', self.i_left
+                if self.i_left >= self.N:
+                    break
+                elif func_start(rows[self.i_left]) < self.win_left:
+                    self.i_left += 1
+                else:
+                    break
+        
+        def update_buffer_indices(self):
+            # update i_left and i_right to their correction positions
+            self.buffer_right_fill()
+            self.buffer_left_empty()
+            
+        def slide_window(self):
+            self.win_left += increment
+            self.win_right += increment
+            self.update_buffer_indices()
+            
+        def get_bucket(self):
+            #print self.i_left, self.i_right
+            window = rows[self.i_left:self.i_right+1]
+            return (self.win_left, window)
+
+    obj = Wrapper()
+    while obj.win_right < max_dt:
+        # get the current bucket
+        left_dt, buckets = obj.get_bucket()
+        
+        # validation checks
+        if len(buckets) > 0:
+            right_dt = left_dt + bucket_width
+            assert left_dt <= func_start(buckets[0])
+            assert func_start(buckets[-1]) < right_dt, buckets[-1]
+        if obj.i_left > 0:
+            assert func_start(rows[obj.i_left-1]) < left_dt
+        if obj.i_right < (len(rows)-1):
+            assert func_start(rows[obj.i_right+1]) >= obj.win_right
+        
+        # yield
+        yield left_dt, buckets
+        
+        # increment
+        obj.slide_window()
 
 
 if __name__ == "__main__":
@@ -477,12 +611,12 @@ if __name__ == "__main__":
 
     print "\nEXAMPLE 4 -- OVERLAPPING WINDOWS"
     points = []
-    for add_hours in xrange(0, 48, 2):
+    for add_hours in (range(0, 48, 2) + [92]):
         points.append(datetime(2015, 2, 3, 0, 0) + timedelta(hours=add_hours))
     rows = [(p, p, object()) for p in points]
 
     origin = datetime(2015, 2, 2, 0, 0)
-    fin = datetime(2015, 2, 7, 0, 0)
+    fin = datetime(2015, 2, 7, 12, 0)
 
     width = timedelta(hours=24)
     increment = timedelta(hours=6)
@@ -493,6 +627,44 @@ if __name__ == "__main__":
         func_start=lambda r: r[0], func_end=lambda r: r[1])
 
     for dt, rows in bucksnaps.iteritems():
-        print dt, "to", dt + width
-        for row in rows:
-            print "\t", row[0], '  ', row[1], '  ', row[2]
+        print dt, "to", dt + width, "            num rows=", len(rows)
+        times = [row[0] for row in rows]
+        if len(rows) == 0:
+            print "\t", len(rows), "rows    "
+        else:
+            print "\t", len(rows), "rows\t [%s ... %s]" % (min(times), max(times))
+        #for row in rows:
+        #    #print "\t", row[0], '  ', row[1], '  ', row[2]
+            
+    #
+    #
+    # Example 4
+    #
+
+    print "\nEXAMPLE 4(b) -- OVERLAPPING WINDOWS (via generic)"
+    points = []
+    for add_hours in (range(0, 48, 2) + [92]):
+        points.append(datetime(2015, 2, 3, 0, 0) + timedelta(hours=add_hours))
+    rows = [(p, p, object()) for p in points]
+
+    origin = datetime(2015, 2, 2, 0, 0)
+    fin = datetime(2015, 2, 7, 12, 0)
+
+    width = timedelta(hours=24)
+    increment = timedelta(hours=6)
+
+    bucksnaps_iter = discretise_generic(rows, origin, fin, width, 
+        increment=increment,
+        cut_oob=True,
+        func_start=lambda r: r[0], func_end=lambda r: r[1])
+
+    for dt, rows in bucksnaps_iter:
+        print dt, "to", dt + width, "            num rows=", len(rows)
+        times = [row[0] for row in rows]
+        if len(rows) == 0:
+            print "\t", len(rows), "rows    "
+        else:
+            print "\t", len(rows), "rows\t [%s ... %s]" % (min(times), max(times))
+        #for row in rows:
+        #    #print "\t", row[0], '  ', row[1], '  ', row[2]
+            
