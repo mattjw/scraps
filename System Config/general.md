@@ -143,3 +143,9 @@ Zotero
 ```
 
 `(*)` indicates software that there is no free option for this software. Under this definition, freemium (e.g., Dropbox) is considered 'free', whereas anything only offers a finite trial period is 'not free'.
+
+## OS X Config
+
+* Add standard user account to sudoers. `sudo visudo`.
+* Screen hotspots. `Mission Control -> Hot Corners`. Top right: Display to Sleep. Bottom right: Mission Contro.
+* Better Trackpad. Lookup = Off. Secondary Click = Two-Fingers. Tap to Click = Off. Silent Clicking = True. Force Click & Haptic Feedback = Off.
