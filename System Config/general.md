@@ -43,7 +43,7 @@ which pip
 If pip not included by default:
 ```
 curl https://bootstrap.pypa.io/get-pip.py > get-pip.py
-python get-pip --user
+python get-pip.py --user
 ```
 
 **Warning:** Avoid spaces in file paths.
@@ -52,11 +52,12 @@ Then generic pipeline...
 
 ```
 pip install --user virtualenv
+# or:  ~/Library/Python/2.7/bin/pip  install --user virtualenv
 ```
 
 ```
-python ~/Library/Python/2.7/lib/python/site-packages/virtualenv.py venv
 virtualenv venv
+# or: python ~/Library/Python/2.7/lib/python/site-packages/virtualenv.py venv
 ```
 
 ```
