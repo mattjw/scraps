@@ -153,4 +153,5 @@ Zotero
   * Edit -> Substitutions: disable Smart Quotes, Smart Dashes, Text Replacement
   * Edit -> Spelling and Grammar: disable Correct Spelling Automatically.
 * Desktop icons. Show View Optons... Icon Size = 32x32; Grid Spacing = ???; Text Size = 10; Sort By = Snap to Grid
-* Finder. Open directory. Right click. Show view options... Always open in list view; Browse in list view; Show columns = Kind; Sort By = Kind. Use as Defaults.
+* Finder basics. Open directory. Right click. Show view options... Always open in list view; Browse in list view; Show columns = Kind; Sort By = Kind. Use as Defaults.
+* Finder show all files. `defaults write com.apple.finder AppleShowAllFiles YES`
