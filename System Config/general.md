@@ -156,3 +156,4 @@ Zotero
   * Open directory. Right click. Show view options... Always open in list view; Browse in list view; Show columns = Kind; Sort By = Kind. Use as Defaults.
   * Finder show all files. `defaults write com.apple.finder AppleShowAllFiles YES`
   * Finder Preferences: New Finder windows show: `<user>`
+* Increase display DPI. Sys Pref -> Display -> Scaled -> third from left.
