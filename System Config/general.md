@@ -157,3 +157,8 @@ Zotero
   * Finder show all files. `defaults write com.apple.finder AppleShowAllFiles YES`
   * Finder Preferences: New Finder windows show: `<user>`
 * Increase display DPI. Sys Pref -> Display -> Scaled -> third from left.
+* Add more desktops. Three-finger gesture zoom-out. `+` button.
+
+## Other config
+
+* Dropbox: Manual copy. Install Dropbox. Disable WiFi. Prevent syncing. Close app. Copy files to ~/Dropbox. Re-open app. Resume syncing.
