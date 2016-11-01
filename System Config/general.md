@@ -161,4 +161,9 @@ Zotero
 
 ## Other config
 
-* Dropbox: Manual copy. Install Dropbox. Disable WiFi. Prevent syncing. Close app. Copy files to ~/Dropbox. Re-open app. Resume syncing.
+* Dropbox manual copy.
+  * Install Dropbox. Sign-in.
+  * On "Would you like to sync everything?". Disable WiFi / prevent syncing. Click 'Sync Everything'.
+  * Close app. Copy files to `~/Dropbox2`. `cp -paR /Volumes/some/other/place/Dropbox ~/Dropbox2`.
+  * Delete Dropbox metadata files so they'll be re-created. (`.dropbox` and `.dropbox.cache`.) Delete `~/Dropbox`, replace it with `~/Dropbox2`.
+  * Re-open app. Resume syncing.
