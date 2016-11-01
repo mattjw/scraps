@@ -7,7 +7,18 @@ git config --global user.name "Matt J Williams"
 
 
 ## homebrew
-TODO
+
+* Promote standard user to admin account (SysPrefs).
+* 
+  ```
+  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  ```
+* Restart.
+* Demote standard user down to non-admin (or otherwise as before).
+* 
+ ```
+ brew install jq
+ ```
 
 
 ## vim
