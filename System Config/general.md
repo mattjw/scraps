@@ -158,6 +158,9 @@ Zotero
   * Finder Preferences: New Finder windows show: `<user>`
 * Increase display DPI. Sys Pref -> Display -> Scaled -> third from left.
 * Add more desktops. Three-finger gesture zoom-out. `+` button.
+* Disable two-finger left/right gesture for Chrome back/forward:
+  * Disable gesture in Chrome only: `defaults write com.google.Chrome.plist AppleEnableSwipeNavigateWithScrolls -bool FALSE`
+  * Disable for al apps: SysPref -> Trackpad -> More Gestures
 
 ## Other config
 
