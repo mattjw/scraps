@@ -90,15 +90,24 @@ which pip python
 ```
 
 ```
+# hack to switch to pip3 (optional): alias pip=pip3
+
 pip install requests publicsuffix2 urllib3 flask beautifulsoup4 scrapy
-pip install sh functools32 python-dateutil pytz unicodecsv
-pip install scipy numpy pandas jupyter
+pip install sh python-dateutil pytz
+pip install scipy numpy pandas jupyter ipython recipy
+pip install pymc3
 pip install matplotlib
 pip install nltk scikit-learn pyclust
 pip install patsy statsmodels gensim
-pip install networkx python-igraph powerlaw
+pip install networkx powerlaw
 pip install pymongo couchdb
 pip install shapely fiona geopy pysal rtree
+
+# redundant in python 3:
+pip install unicodecsv functools32
+
+# problematic install:
+pip install python-igraph
 ```
 
 Cartopy (http://louistiao.me/posts/installing-cartopy-on-mac-osx-1011/)...
