@@ -27,7 +27,20 @@ See: `.vimrc`.
 
 ## tmux
 
+TODO
 
+## python3
+
+```
+brew install python3
+```
+
+```
+which pip3
+  /usr/local/bin/pip3
+which python3
+  /usr/local/bin/python3
+```
 
 ## python
 
