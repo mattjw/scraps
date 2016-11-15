@@ -1,3 +1,8 @@
+# Author:   Matt J Williams
+#           http://www.mattjw.net
+#           mattjw@mattjw.net
+# Date:     2016
+
 # IO for line-delimited JSON.
 
 
@@ -20,19 +25,28 @@ def save_ldjson(seq, fpath):
             pass
 
 
-def yield_ldjson(fpath):
+def load_ldjson(fpath, extended_json=False):
     """
     Load sequence of JSON objects from file. Yields each object to allow
     iteration. Ignores blank lines.
+
+    If `extended_json` is True, then read `fpath` as if it contains Extended
+    JSON documents (as defined and output by MongoDB).
     """
+    if extended_json:
+        import bson.json_util
+
     with open(fpath, 'r') as f:
         for ln in f:
             if ln.strip() == '':
                 continue
-            obj = json.loads(ln)
+            if not extended_json:
+                obj = json.loads(ln)
+            else:
+                obj = bson.json_util.loads(ln)
             yield obj
 
 
 if __name__ == "__main__":
     for doc in load_ldjson('_example_data/example_ldjson.json'):
-        print doc['name']
+        print(doc['name'])

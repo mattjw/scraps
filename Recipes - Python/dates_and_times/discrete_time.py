@@ -506,25 +506,25 @@ if __name__ == "__main__":
             i1 = bucktime
             i2 = bucktime + width
             val = [elm[2:]for elm in buck]
-            print "%s    [%s, %s)    %s" % (bucktime, i1, i2, val)
+            print("%s    [%s, %s)    %s" % (bucktime, i1, i2, val))
     
     def demo(rows, buckets, width):
-        print "\n", origin, " to ", fin, " with bucket width ", width
+        print("\n", origin, " to ", fin, " with bucket width ", width)
 
-        print "\nRows..."
+        print("\nRows...")
         for r in rows:
             for d in r[0:2]:
-                print str(d) + "  ",
-            print r[2:]
+                print(str(d) + "  ", end=' ')
+            print(r[2:])
 
-        print "\nBuckets..."
+        print("\nBuckets...")
         pprint_bucks(buckets, width)
     
     #
     #
     # Example 1
     #
-    print "\nEXAMPLE 1 -- RANDOM INTERVALS"
+    print("\nEXAMPLE 1 -- RANDOM INTERVALS")
     def random_intervals(dt0, dt1, num):
         dur = dt1 - dt0
         rows = []
@@ -560,7 +560,7 @@ if __name__ == "__main__":
     #
     # Example 2
     #
-    print "\nEXAMPLE 2 -- DAY-OF-MONTH PRIME RANGES"
+    print("\nEXAMPLE 2 -- DAY-OF-MONTH PRIME RANGES")
     prime_days = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31]
 
     rows = []
@@ -583,7 +583,7 @@ if __name__ == "__main__":
     # Example 3
     #
 
-    print "\nEXAMPLE 3 -- ZERO-DURATION INTERVALS"
+    print("\nEXAMPLE 3 -- ZERO-DURATION INTERVALS")
     points = [datetime(2015, 2, 3, 0,  0), 
               datetime(2015, 2, 3, 11, 0),
               datetime(2015, 2, 3, 13, 30),
@@ -609,7 +609,7 @@ if __name__ == "__main__":
     # Example 4
     #
 
-    print "\nEXAMPLE 4 -- OVERLAPPING WINDOWS"
+    print("\nEXAMPLE 4 -- OVERLAPPING WINDOWS")
     points = []
     for add_hours in (range(0, 48, 2) + [92]):
         points.append(datetime(2015, 2, 3, 0, 0) + timedelta(hours=add_hours))
@@ -627,12 +627,12 @@ if __name__ == "__main__":
         func_start=lambda r: r[0], func_end=lambda r: r[1])
 
     for dt, rows in bucksnaps.iteritems():
-        print dt, "to", dt + width, "            num rows=", len(rows)
+        print(dt, "to", dt + width, "            num rows=", len(rows))
         times = [row[0] for row in rows]
         if len(rows) == 0:
-            print "\t", len(rows), "rows    "
+            print("\t", len(rows), "rows    ")
         else:
-            print "\t", len(rows), "rows\t [%s ... %s]" % (min(times), max(times))
+            print("\t", len(rows), "rows\t [%s ... %s]" % (min(times), max(times)))
         #for row in rows:
         #    #print "\t", row[0], '  ', row[1], '  ', row[2]
             
@@ -641,7 +641,7 @@ if __name__ == "__main__":
     # Example 4
     #
 
-    print "\nEXAMPLE 4(b) -- OVERLAPPING WINDOWS (via generic)"
+    print("\nEXAMPLE 4(b) -- OVERLAPPING WINDOWS (via generic)")
     points = []
     for add_hours in (range(0, 48, 2) + [92]):
         points.append(datetime(2015, 2, 3, 0, 0) + timedelta(hours=add_hours))
@@ -659,12 +659,12 @@ if __name__ == "__main__":
         func_start=lambda r: r[0], func_end=lambda r: r[1])
 
     for dt, rows in bucksnaps_iter:
-        print dt, "to", dt + width, "            num rows=", len(rows)
+        print(dt, "to", dt + width, "            num rows=", len(rows))
         times = [row[0] for row in rows]
         if len(rows) == 0:
-            print "\t", len(rows), "rows    "
+            print("\t", len(rows), "rows    ")
         else:
-            print "\t", len(rows), "rows\t [%s ... %s]" % (min(times), max(times))
+            print("\t", len(rows), "rows\t [%s ... %s]" % (min(times), max(times)))
         #for row in rows:
         #    #print "\t", row[0], '  ', row[1], '  ', row[2]
             
