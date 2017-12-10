@@ -20,6 +20,9 @@ git config --global user.name "Matt J Williams"
  brew install jq
  ```
 
+## fish and iTerm
+
+TODO
 
 ## vim
 See: `.vimrc`.
@@ -120,7 +123,10 @@ pip install pyproj cartopy
 
 ## OS X apps
 
+Reference list of applications to consider installing.
+
 ```
+Atom
 Android SDK
 Android Studio
 Alfred 2 (*)
@@ -170,6 +176,7 @@ TextMate 2
 TotalSpaces2 (screen manager) (*)
 Transmission (BitTorrent client)
 Trim Enabler
+Visual Studio Code (VSCode)
 VirtualBox
 Weka (data mining suite)
 Xcode
@@ -180,19 +187,19 @@ Zotero
 
 ## OS X Config
 
-* Add standard user account to sudoers. `sudo visudo`.
-* Screen hotspots. `Mission Control -> Hot Corners`. Top right: Display to Sleep. Bottom right: Desktop.
-* Better Trackpad. Lookup = Off. Secondary Click = Two-Fingers. Tap to Click = Off. Silent Clicking = True. Force Click & Haptic Feedback = Off.
-* No annoying text substitutions. Open TextEdit. Preferences. Options: disable Correct Spelling Automatically; disable Smart Quotes, Smart Dashes, Text Replacement
-* Desktop icons. Show View Optons... Icon Size = 32x32; Grid Spacing = ???; Text Size = 10; Sort By = Snap to Grid
-* Finder...
+* **Add standard user account to sudoers**. `sudo visudo`.
+* **Screen hotspots**. `Mission Control -> Hot Corners`. Top right: Display to Sleep. Bottom right: Desktop.
+* **Better trackpad**. Lookup = Off. Secondary Click = Two-Fingers. Tap to Click = Off. Silent Clicking = True. Force Click & Haptic Feedback = Off.
+* **No annoying text substitutions**. Open TextEdit. Preferences. Options: disable Correct Spelling Automatically; disable Smart Quotes, Smart Dashes, Text Replacement
+* **Better Desktop icons**. Show View Optons... Icon Size = 32x32; Grid Spacing = ???; Text Size = 10; Sort By = Snap to Grid
+* **Finder setup**...
   * Open directory. Right click. Show view options... Always open in list view; Browse in list view; Show columns = Kind; Sort By = Kind. Use as Defaults.
   * Finder show all files. `defaults write com.apple.finder AppleShowAllFiles YES`
   * Finder Preferences: New Finder windows show: `<user>`
   * Always show extensions: `Finder -> Preferences -> Advanced`.
-* Increase display DPI. Sys Pref -> Display -> Scaled -> third from left.
-* Add more desktops. Three-finger gesture zoom-out. `+` button.
-* Disable two-finger left/right gesture for Chrome back/forward:
+* **Increase display DPI**. Sys Pref -> Display -> Scaled. More density than default.
+* **Add more desktops**. Three-finger gesture zoom-out. `+` button.
+* **Disable two-finger left/right gesture for Chrome back/forward**:
   * Disable gesture in Chrome only: `defaults write com.google.Chrome.plist AppleEnableSwipeNavigateWithScrolls -bool FALSE`
   * Disable for al apps: SysPref -> Trackpad -> More Gestures
 
