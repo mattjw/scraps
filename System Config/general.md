@@ -22,9 +22,28 @@ git config --global user.name "Matt J Williams"
  brew install jq
  ```
 
-## fish and iTerm
+## fish and iTerm 2
 
-TODO
+Install Powerline
+
+* 
+
+iTerm 2:
+
+* Install extra color themes: http://iterm2colorschemes.com/
+* Color theme: argonaut
+* Preferences -> Window -> Transparency. 10% opaque.
+* Text settings: 12 pt Meslo LG M DZ regular for powerline
+
+Fish:
+
+* Follow Ellerbrock's instructions
+* Install _oh my fish_
+* Fish theme: agnoster. `omf theme agnoster`
+
+Resources:
+
+* General how-tos on fish and OS X: https://github.com/ellerbrock/fish-shell-setup-osx 
 
 ## vim
 See: `.vimrc`.
