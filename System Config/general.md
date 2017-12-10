@@ -22,6 +22,10 @@ Useful utils:
 
 ## fish and iTerm 2
 
+Optional prep:
+
+* Create `~/.bash_profile`. Add line `echo "<.bash_profile>"`.
+
 Install Powerline
 
 * [ellerbrock](https://github.com/ellerbrock/fish-shell-setup-osx)
@@ -44,6 +48,13 @@ fish:
 * Install oh-my-fish ([guide](https://lobster1234.github.io/2017/04/08/setting-up-fish-and-iterm2/)): `curl -L https://get.oh-my.fish | fish`
 * Fish theme: agnoster. `omf install agnoster` `omf theme agnoster`
 * Set iTerm to default to fish: (iTerm) Preferences -> General -> Command. `/usr/local/bin/fish`
+
+Config:
+
+* Automatically pull in env vars from bash: Run `omf install foreign-env`. Add the line `fenv source ~/.bash_profile` to `~/.config/fish/config.fish`.
+* Add line `echo "<config.fish>"` to `~/.config/fish/config.fish`.
+* Create aliases (`funcsave` will persist an alias)...
+  * `alias kube "kubectl"` `funcsave kube`
 
 Resources:
 
