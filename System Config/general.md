@@ -1,3 +1,5 @@
+# System and software
+
 ## git
 
 ```
@@ -209,7 +211,7 @@ Zotero
 * **Moom**. Launch on login. Separate windows by 6 pt, and do NOT apply to screen edges. Run as menu bar. Grid/keyboard control highlight 55%.
   * Trigger Moom manager with cmd option space (unbind cmd option space: SysPref -> Keyboard -> Shortcuts -> Spotlight -> Show Finder serach window). UNTICK show logo. TICK show cheat sheet. TICK repeat to toggle grid. UNTICK grid first. Auto-dismiss: TICK move & zoom; UNTICK move, grow, shrink; TICK other actions.
 
-## Other tips
+# Misc. software tips and tricks
 
 * Dropbox manual copy.
   * Install Dropbox. Sign-in.
@@ -217,3 +219,7 @@ Zotero
   * Close app. Copy files to `~/Dropbox2`. `cp -paR /Volumes/some/other/place/Dropbox ~/Dropbox2`.
   * Delete Dropbox metadata files so they'll be re-created. (`.dropbox` and `.dropbox.cache`.) Delete `~/Dropbox`, replace it with `~/Dropbox2`.
   * Re-open app. Resume syncing.
+
+# Hardware / accessories
+
+* Camera slider
