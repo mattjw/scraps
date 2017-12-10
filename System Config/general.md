@@ -10,23 +10,24 @@ git config --global user.name "Matt J Williams"
 
 ## homebrew
 
-* Promote primary (day-to-day) user account to admin account (SysPrefs).
-* 
-  ```
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-  ```
-* Restart.
-* Demote primary account down to non-admin (or otherwise as before).
-* 
- ```
- brew install jq
- ```
+Install: 
+
+* ~~Promote primary (day-to-day) user account to admin account (SysPrefs).~~
+* `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+* ~~Restart. Demote primary account down to non-admin (or otherwise as before).~~
+
+Useful utils:
+
+* `brew install jq`
 
 ## fish and iTerm 2
 
 Install Powerline
 
-* 
+* (https://github.com/ellerbrock/fish-shell-setup-osx )[ellerbrock]
+* `brew install fontconfig`
+* `git clone https://github.com/powerline/fonts.git`
+* `./fonts/install.sh`
 
 iTerm 2:
 
