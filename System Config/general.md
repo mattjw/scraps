@@ -37,9 +37,10 @@ iTerm 2:
 
 * Install extra color themes: http://iterm2colorschemes.com/
 * Color theme: argonaut
-* Preferences -> Window -> Transparency. 10% opaque.
+* Preferences -> Profiles -> Window -> Transparency. 10% opaque.
 * Text settings: Meslo LG M DZ for Powerline, Regular, 12 pt
-* Preferences -> Window -> Terminal. Unlimited scrollback.
+* Preferences -> Profiles -> Window -> Terminal. Unlimited scrollback.
+* Preferences -> General. UNTICK Confirm Quit iTerm2.
 
 fish:
 
