@@ -24,7 +24,7 @@ Useful utils:
 
 Install Powerline
 
-* (https://github.com/ellerbrock/fish-shell-setup-osx )[ellerbrock]
+* [ellerbrock](https://github.com/ellerbrock/fish-shell-setup-osx)
 * `brew install fontconfig`
 * `git clone https://github.com/powerline/fonts.git`
 * `./fonts/install.sh`
@@ -34,17 +34,21 @@ iTerm 2:
 * Install extra color themes: http://iterm2colorschemes.com/
 * Color theme: argonaut
 * Preferences -> Window -> Transparency. 10% opaque.
-* Text settings: 12 pt Meslo LG M DZ regular for powerline
+* Text settings: Meslo LG M DZ for Powerline, Regular, 12 pt
+* Preferences -> Window -> Terminal. Unlimited scrollback.
 
-Fish:
+fish:
 
-* Follow Ellerbrock's instructions
-* Install _oh my fish_
-* Fish theme: agnoster. `omf theme agnoster`
+* [ellerbrock](https://github.com/ellerbrock/fish-shell-setup-osx)
+* `brew install fish --HEAD`
+* Install oh-my-fish ([guide](https://lobster1234.github.io/2017/04/08/setting-up-fish-and-iterm2/)): `curl -L https://get.oh-my.fish | fish`
+* Fish theme: agnoster. `omf install agnoster` `omf theme agnoster`
+* Set iTerm to default to fish: (iTerm) Preferences -> General -> Command. `/usr/local/bin/fish`
 
 Resources:
 
-* General how-tos on fish and OS X: https://github.com/ellerbrock/fish-shell-setup-osx 
+* fish set up tutorial: https://github.com/ellerbrock/fish-shell-setup-osx 
+* another fish set up tutorial: https://lobster1234.github.io/2017/04/08/setting-up-fish-and-iterm2/
 
 ## vim
 See: `.vimrc`.
