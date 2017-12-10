@@ -213,6 +213,7 @@ Zotero
 * **Disable two-finger left/right gesture for Chrome back/forward**:
   * Disable gesture in Chrome only: `defaults write com.google.Chrome.plist AppleEnableSwipeNavigateWithScrolls -bool FALSE`
   * Disable for al apps: SysPref -> Trackpad -> More Gestures
+* **Better dock**. Size 30%. Magnification 65%.
 
 ## Google Chrome
 
