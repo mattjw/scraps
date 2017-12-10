@@ -135,6 +135,7 @@ Caffeine (anti-sleep)
 Chicken of the VNC (VNC client)
 Cyberduck (file transfer client)
 DropBox
+Docker
 DaisyDisk (*)
 Eclipse Juno
 Eclipse Scala IDE
@@ -203,7 +204,12 @@ Zotero
   * Disable gesture in Chrome only: `defaults write com.google.Chrome.plist AppleEnableSwipeNavigateWithScrolls -bool FALSE`
   * Disable for al apps: SysPref -> Trackpad -> More Gestures
 
-## Other config
+## Other standard config
+
+* **Moom**. Launch on login. Separate windows by 6 pt, and do NOT apply to screen edges. Run as menu bar. Grid/keyboard control highlight 55%.
+  * Trigger Moom manager with cmd option space (unbind cmd option space: SysPref -> Keyboard -> Shortcuts -> Spotlight -> Show Finder serach window). UNTICK show logo. TICK show cheat sheet. TICK repeat to toggle grid. UNTICK grid first. Auto-dismiss: TICK move & zoom; UNTICK move, grow, shrink; TICK other actions.
+
+## Other tips
 
 * Dropbox manual copy.
   * Install Dropbox. Sign-in.
