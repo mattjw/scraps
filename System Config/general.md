@@ -234,6 +234,7 @@ Zotero
 
 ## OS X Config
 
+* **Disable guest accounts**. `Sys Prefs -> Users`.
 * **Add standard user account to sudoers**. `sudo visudo`.
 * **Screen hotspots**. `Mission Control -> Hot Corners`. Top right: Display to Sleep. Bottom right: Desktop.
 * **Better trackpad**. Lookup = Off. Secondary Click = Two-Fingers. Tap to Click = Off. Silent Clicking = True. Force Click & Haptic Feedback = Off.
