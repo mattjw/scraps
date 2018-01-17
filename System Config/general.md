@@ -62,6 +62,10 @@ Resources:
 * fish set up tutorial: https://github.com/ellerbrock/fish-shell-setup-osx 
 * another fish set up tutorial: https://lobster1234.github.io/2017/04/08/setting-up-fish-and-iterm2/
 
+Shortcut to open iTerm at Finder directory:
+
+* `Sys Prefs -> Keyboard -> Shortcuts -> Services -> Files and Folders -> New iTerm2 Window Here`. Shorcut: alt shift cmd t
+
 ## vim
 See: `.vimrc`.
 
