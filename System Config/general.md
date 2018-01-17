@@ -244,7 +244,9 @@ Zotero
   * Open directory. Right click. Show view options... Always open in list view; Browse in list view; Show columns = Kind; Sort By = Kind. Use as Defaults.
   * Finder show all files. `defaults write com.apple.finder AppleShowAllFiles YES`
   * Finder Preferences: New Finder windows show: `<user>`
-  * Always show extensions: `Finder -> Preferences -> Advanced`.
+  * Always show extensions: `Finder -> Preferences -> Advanced -> Show all filenane extensions`. And: Disable `Show warning before changing an extension`.
+  * Perform search from current directory: `Finder -> Preferences -> Advanced -> When performing a search -> Search the current folder`.
+  * Configure sidebar items: `Finder -> Preferences -> Sidebar`. Disable: iCloud Drive; AirDrop; Documents. Enable: <user> (and any other defaults).
 * **Increase display DPI**. Sys Pref -> Display -> Scaled. More density than default.
 * **Add more desktops**. Three-finger gesture zoom-out. `+` button.
 * **Disable two-finger left/right gesture for Chrome back/forward**:
