@@ -235,7 +235,7 @@ Zotero
 ## OS X Config
 
 * **Disable guest accounts**. `Sys Prefs -> Users`.
-* **Add standard user account to sudoers**. `sudo visudo`.
+* ~~**Add standard user account to sudoers**. `sudo visudo`.~~
 * **Screen hotspots**. `Mission Control -> Hot Corners`. Top right: Display to Sleep. Bottom right: Desktop.
 * **Better trackpad**. Lookup = Off. Secondary Click = Two-Fingers. Tap to Click = Off. Silent Clicking = True. Force Click & Haptic Feedback = Off.
 * **No annoying text substitutions**. Open TextEdit. Preferences. Options: disable Correct Spelling Automatically; disable Smart Quotes, Smart Dashes, Text Replacement
