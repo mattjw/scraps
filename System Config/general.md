@@ -47,7 +47,10 @@ fish:
 * [ellerbrock](https://github.com/ellerbrock/fish-shell-setup-osx)
 * `brew install fish --HEAD`
 * Install oh-my-fish ([guide](https://lobster1234.github.io/2017/04/08/setting-up-fish-and-iterm2/)): `curl -L https://get.oh-my.fish | fish`
-* Fish theme: agnoster. `omf install agnoster` `omf theme agnoster`
+* Fish theme: bobthefish.
+  * `omf install bobthefish` `omf theme bobthefish`
+  * Add some config to `vim ~/.config/fish/config.fish`...
+  * `set -g theme_display_k8s_context yes` Show label containing current k8s context.
 * Set iTerm to default to fish: (iTerm) Preferences -> General -> Command. `/usr/local/bin/fish`
 
 Config:
