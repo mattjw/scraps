@@ -33,7 +33,7 @@ pipenv run jupyter nbextension enable code_font_size/code_font_size
 pipenv run jupyter nbextension enable varInspector/main
 ```
 
-See (here)[https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/nbextensions.html] for more extensions.
+See [here](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/nbextensions.html) for more extensions.
 
 Start notebook...
 
