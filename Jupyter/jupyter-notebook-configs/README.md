@@ -1,3 +1,4 @@
+Configuration settings for Jupyter.
 
 -
 

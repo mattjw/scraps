@@ -1,5 +1,6 @@
 # System and software
 
+
 ## git
 
 ```
@@ -19,6 +20,7 @@ Install:
 Useful utils:
 
 * `brew install jq`
+
 
 ## fish and iTerm 2
 
@@ -69,6 +71,7 @@ Shortcut to open iTerm at Finder directory:
 
 * `Sys Prefs -> Keyboard -> Shortcuts -> Services -> Files and Folders -> New iTerm2 Window Here`. Shorcut: alt shift cmd t
 
+
 ## vim
 See: `.vimrc`.
 
@@ -76,6 +79,7 @@ See: `.vimrc`.
 ## tmux
 
 TODO
+
 
 ## python3
 
@@ -88,6 +92,28 @@ which pip3
   /usr/local/bin/pip3
 which python3
   /usr/local/bin/python3
+```
+
+## [pipenv](https://pipenv.readthedocs.io)
+
+Install:
+
+```
+brew install pipenv
+```
+
+Usage:
+
+```
+pipenv --three  # initialise a project with Python 3
+echo "print('hello')" > main.py
+pipenv run python main.py
+```
+
+To enter a shell for this env:
+
+```
+pipenv shell
 ```
 
 ## python
@@ -239,6 +265,7 @@ Zotero
 
 `(*)` indicates software that there is no free option for this software. Under this definition, freemium (e.g., Dropbox) is considered 'free', whereas anything only offers a finite trial period is 'not free'.
 
+
 ## OS X Config
 
 * **Disable guest accounts**. `Sys Prefs -> Users`.
@@ -262,14 +289,17 @@ Zotero
 * **Better dock**. Size 30%. Magnification 65%.
 * **Require unlock on screensaver**: `Security & Privacy -> General` Require password immediately after sleep or screensaver begins.
 
+
 ## Google Chrome
 
 * Extensions: OneTab; Tabli
+
 
 ## Moom
 
 * Launch on login. Separate windows by 6 pt, and do NOT apply to screen edges. Run as menu bar. Grid/keyboard control highlight 55%.
   * Trigger Moom manager with cmd option space (unbind cmd option space: SysPref -> Keyboard -> Shortcuts -> Spotlight -> Show Finder serach window). UNTICK show logo. TICK show cheat sheet. TICK repeat to toggle grid. UNTICK grid first. Auto-dismiss: TICK move & zoom; UNTICK move, grow, shrink; TICK other actions.
+
 
 # Misc. software tips and tricks
 
@@ -279,6 +309,7 @@ Zotero
   * Close app. Copy files to `~/Dropbox2`. `cp -paR /Volumes/some/other/place/Dropbox ~/Dropbox2`.
   * Delete Dropbox metadata files so they'll be re-created. (`.dropbox` and `.dropbox.cache`.) Delete `~/Dropbox`, replace it with `~/Dropbox2`.
   * Re-open app. Resume syncing.
+
 
 # Hardware / accessories
 
