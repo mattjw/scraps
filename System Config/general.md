@@ -57,10 +57,21 @@ fish:
 
 Config:
 
-* Automatically pull in env vars from bash: Run `omf install foreign-env`. Add the line `fenv source ~/.bash_profile` to `~/.config/fish/config.fish`.
+* ~~Automatically pull in env vars from bash: Run `omf install foreign-env`. Add the line `fenv source ~/.bash_profile` to `~/.config/fish/config.fish`.~~
 * Add line `echo "<config.fish>"` to `~/.config/fish/config.fish`.
+
+[Abbreviations](https://fishshell.com/docs/current/commands.html#abbr):
+
+* Create abbreviations. fish will persist these without needing an explicit save step.
+* `abbr --add dc docker-compose`
+* `abbr --add d docker`
+* `abbr --add k kubectl`
+* `abbr --show`
+
+Aliases:
+
 * Create aliases (`funcsave` will persist an alias)...
-  * `alias kube "kubectl"` `funcsave kube`
+* `alias kube "kubectl"` `funcsave kube` (example only. this is better as an abbreviation. see above)
 
 Resources:
 
@@ -115,6 +126,7 @@ To enter a shell for this env:
 ```
 pipenv shell
 ```
+
 
 ## python
 
@@ -295,10 +307,28 @@ Zotero
 * Extensions: OneTab; Tabli
 
 
+## Spectacle
+
+Window sizing app. Preferences -> Launch at Startup.
+
+Recall the shortcuts:
+
+* Center: Cmd-Alt c
+* Full: Cmd-Alt f
+* Left: Cmd-Alt left-arrow
+* ...
+
+
 ## Moom
+
+DEPRECATED: Now using Spectacle instead of Moom.
 
 * Launch on login. Separate windows by 6 pt, and do NOT apply to screen edges. Run as menu bar. Grid/keyboard control highlight 55%.
   * Trigger Moom manager with cmd option space (unbind cmd option space: SysPref -> Keyboard -> Shortcuts -> Spotlight -> Show Finder serach window). UNTICK show logo. TICK show cheat sheet. TICK repeat to toggle grid. UNTICK grid first. Auto-dismiss: TICK move & zoom; UNTICK move, grow, shrink; TICK other actions.
+
+## Docker
+
+For direct link to file (no need to use Docker Hub), see [this](https://github.com/docker/docker.github.io/issues/7179) github issue.
 
 
 # Misc. software tips and tricks
