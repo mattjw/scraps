@@ -68,6 +68,7 @@ abbr --add dc docker-compose
 abbr --add d docker
 abbr --add k kubectl
 abbr --add gco "git checkout"
+abbr --add gba "git branch -a"
 abbr --show
 
 Aliases:
