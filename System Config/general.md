@@ -62,11 +62,13 @@ Config:
 
 [Abbreviations](https://fishshell.com/docs/current/commands.html#abbr):
 
-* Create abbreviations. fish will persist these without needing an explicit save step.
-* `abbr --add dc docker-compose`
-* `abbr --add d docker`
-* `abbr --add k kubectl`
-* `abbr --show`
+Create abbreviations. fish will persist these without needing an explicit save step.
+```
+abbr --add dc docker-compose
+abbr --add d docker
+abbr --add k kubectl
+abbr --add gco "git checkout"
+abbr --show
 
 Aliases:
 
