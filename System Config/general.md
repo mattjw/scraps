@@ -43,6 +43,11 @@ iTerm 2:
 * Text settings: Meslo LG M DZ for Powerline, Regular, 12 pt
 * Preferences -> Profiles -> Window -> Terminal. Unlimited scrollback.
 * Preferences -> General. UNTICK Confirm Quit iTerm2.
+* Add key bindings (Preferences -> Profiles -> Keys -> Add (+) New Binding) ([see also](https://apple.stackexchange.com/a/204802)):
+  * Delete to beginning of word: Action = `Send Hex Code`. Value = `0x17`. Shortcut = `Option + Delete`.
+* Increase cursor speed (system-wide setting): 
+  * System Preferences -> Keyboard -> Keyboard Tab -> Keyboard Repeat = Rung 8 of 8 (right-most) (default is 7 of 8 rungs)
+  * System Preferences -> Keyboard -> Keyboard Tab -> Delay Until Repeat = Rung 4 of 6 (default is 3 of 6 rungs)
 
 fish:
 
