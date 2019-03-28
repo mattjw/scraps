@@ -74,6 +74,7 @@ abbr --add d docker
 abbr --add k kubectl
 abbr --add gco "git checkout"
 abbr --add gba "git branch -a"
+abbr --add hs "history search --show-time --max=10"
 abbr --show
 
 Aliases:
