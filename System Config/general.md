@@ -122,6 +122,26 @@ Install pyenv:
 brew install pyenv
 ```
 
+Set up fish terminal for pyenv:
+
+```bash
+pyenv init
+# follow instructions to append `status ...` line to `~/.config/fish/config.fish`
+```
+
+Fix `zipimport.ZipImportError: can't decompress data; zlib not available` problem:
+
+```
+$ brew install zlib
+$ brew info zlib
+export LDFLAGS="-L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
+$ export LDFLAGS="-L/usr/local/opt/zlib/lib"
+$ export CPPFLAGS="-I/usr/local/opt/zlib/include"
+```
+
+At this point you'll probably want to re-start any open terminals.
+
 Install a particular version:
 
 ```bash
