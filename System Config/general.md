@@ -103,7 +103,7 @@ TODO
 
 ## python3
 
-```
+```bash
 brew install python3
 ```
 
@@ -113,6 +113,21 @@ which pip3
 which python3
   /usr/local/bin/python3
 ```
+
+## Pyenv
+
+Install pyenv:
+
+```bash
+brew install pyenv
+```
+
+Install a particular version:
+
+```bash
+pyenv install 3.6.8
+```
+
 
 ## [pipenv](https://pipenv.readthedocs.io)
 
