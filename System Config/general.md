@@ -114,7 +114,25 @@ which python3
   /usr/local/bin/python3
 ```
 
-## Pyenv
+
+## pyenv and pipenv
+
+The following steps are to install pyenv and pipenv in a mutually compatible way.
+
+### pyenv
+
+Do this first, before installing pipenv.
+
+Preempt the `zipimport.ZipImportError: can't decompress data; zlib not available` problem:
+
+```
+$ brew install zlib
+$ brew info zlib
+export LDFLAGS="-L/usr/local/opt/zlib/lib"
+export CPPFLAGS="-I/usr/local/opt/zlib/include"
+$ export LDFLAGS="-L/usr/local/opt/zlib/lib"
+$ export CPPFLAGS="-I/usr/local/opt/zlib/include"
+```
 
 Install pyenv:
 
@@ -129,17 +147,6 @@ pyenv init
 # follow instructions to append `status ...` line to `~/.config/fish/config.fish`
 ```
 
-Fix `zipimport.ZipImportError: can't decompress data; zlib not available` problem:
-
-```
-$ brew install zlib
-$ brew info zlib
-export LDFLAGS="-L/usr/local/opt/zlib/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include"
-$ export LDFLAGS="-L/usr/local/opt/zlib/lib"
-$ export CPPFLAGS="-I/usr/local/opt/zlib/include"
-```
-
 At this point you'll probably want to re-start any open terminals.
 
 Install a particular version:
@@ -148,13 +155,14 @@ Install a particular version:
 pyenv install 3.6.8
 ```
 
+### [pipenv](https://pipenv.readthedocs.io)
 
-## [pipenv](https://pipenv.readthedocs.io)
+Do **NOT** install using `brew`.
 
-Install:
+Run (yes -- this should indeed be with `pip`):
 
-```
-brew install pipenv
+```bash
+pip install 'pipenv>=2018.11.26'
 ```
 
 Usage:
@@ -173,6 +181,9 @@ pipenv shell
 
 
 ## python
+
+_Deprecation notice: These instructions may be redundant. The pyenv and pipenv 
+instructions (above) take precedence._
 
 Built-in Python:
 ```
