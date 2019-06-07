@@ -115,7 +115,7 @@ which python3
 ```
 
 
-## pyenv and pipenv
+## python: pyenv and pipenv
 
 The following steps are to install pyenv and pipenv in a mutually compatible way.
 
