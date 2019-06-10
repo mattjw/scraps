@@ -27,4 +27,4 @@ the given keybinding.
 | Multi-cursor: Add cursor by selection | cmd + d | default  |  |  |
 | Multi-cursor: Add cursor by mouse click | alt + click | default  |  |  |
 | Shift line up/down | alt + down-arrow (or up-arrow) | default  | "Move Line Up" and "Move Line Down" |  |
-| Duplicate line up/down | alt + shift + down-arrow (or up-arrow) | default  |  |  |
+| Duplicate line up/down | alt + shift + down-arrow (or up-arrow) | default  | "Duplicate Line or Selection" |  |
