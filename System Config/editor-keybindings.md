@@ -24,7 +24,7 @@ the given keybinding.
 | Action | Key Binding | VS Code | IntelliJ |  |
 |--------------------------|------------------|----------|---------|---|
 | Cursor to top/bottombottom of file | cmd + down-arrow (or up-arrow) | default  |  |  |
-| Multi-cursor: Add cursor by selection | cmd + d | default  |  |  |
+| Multi-cursor: Add cursor by selection | cmd + d | default  | Add selection for next occurrence |  |
 | Multi-cursor: Add cursor by mouse click | alt + click | default  |  |  |
 | Shift line up/down | alt + down-arrow (or up-arrow) | default  | "Move Line Up" and "Move Line Down" |  |
 | Duplicate line up/down | alt + shift + down-arrow (or up-arrow) | default  | "Duplicate Line or Selection" |  |
