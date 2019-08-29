@@ -48,6 +48,7 @@ iTerm 2:
 * Increase cursor speed (system-wide setting): 
   * System Preferences -> Keyboard -> Keyboard Tab -> Keyboard Repeat = Rung 8 of 8 (right-most) (default is 7 of 8 rungs)
   * System Preferences -> Keyboard -> Keyboard Tab -> Delay Until Repeat = Rung 4 of 6 (default is 3 of 6 rungs)
+* Disable "Copy to pasteboard on selection".
 
 fish:
 
@@ -76,6 +77,7 @@ abbr --add gco "git checkout"
 abbr --add gba "git branch -a"
 abbr --add hs "history search --show-time --max=10"
 abbr --show
+```
 
 Aliases:
 
