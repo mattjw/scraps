@@ -6,11 +6,13 @@ Notes on keybindings. Serves two purposes:
 
 ## General settings for each editor
 
-### IntelliJ
+### JetBrains
 
-This includes PyCharm, RubyMine, etc.
+This includes IntelliJ, PyCharm, RubyMine, etc.
 
 Bindings can be changed at Preferences -> KeyMap.
+
+See also scraps [JetBrains Config](../JetBrains).
 
 ### VS Code
 
