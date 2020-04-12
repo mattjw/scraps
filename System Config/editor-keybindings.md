@@ -31,3 +31,4 @@ the given keybinding.
 | Shift line up/down | alt + down-arrow (or up-arrow) | default  | "Move Line Up" and "Move Line Down" |  |
 | Duplicate line up/down | alt + shift + down-arrow (or up-arrow) | default  | "Duplicate Line or Selection" |  |
 | Reformat code | alt cmd l |   | default |  |
+| Move caret to counterpart brace | ctrl m | ? | default |
