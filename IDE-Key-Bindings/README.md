@@ -1,7 +1,8 @@
-Notes on keybindings. Serves two purposes:
+Notes on keybindings. Serves a few purposes:
 
-- Prompt for useful commands
+- A cheat sheet for useful commands
 - Instructions on normalising keybindings across different editors
+- Premade configuration files for keymaps
 
 
 ## General settings for each editor
@@ -12,7 +13,20 @@ This includes IntelliJ, PyCharm, RubyMine, etc.
 
 Bindings can be changed at Preferences -> KeyMap.
 
-See also scraps [JetBrains Config](../JetBrains).
+See also key bindings sub-directories.
+
+Setup and configuration for Jetbrains products, such as PyCharm, IntelliJ IDEA, and GoLand.
+
+Where to find keymaps...
+
+- GoLand: `~/Library/Preferences/GoLand2019.3/keymaps`
+- PyCharm: `~/Library/Preferences/PyCharmCE2019.2/keymaps`
+
+
+Other JetBrains dirs...
+
+- `~/Library/Application Support/PyCharmXX`: catalogue with plugins
+- `~/Library/Preferences/PyCharmXX`: the rest of the configuration settings
 
 ### VS Code
 
