@@ -22,6 +22,11 @@ Where to find keymaps...
 - GoLand: `~/Library/Preferences/GoLand2019.3/keymaps`
 - PyCharm: `~/Library/Preferences/PyCharmCE2019.2/keymaps`
 
+Instructions on importing a keymap for the first time:
+
+- In IDE, create a new keymap (any keymap) and name it as per the keymap to be imported (e.g., `MattJW-GoLand`). This is a temporary, dummy keymap.
+- Close IDE.
+- Find the dummy keymap in the `keymaps` dir. Replace it with the keymap being imported.
 
 Other JetBrains dirs...
 

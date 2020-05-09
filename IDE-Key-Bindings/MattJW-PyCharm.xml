@@ -1,4 +1,4 @@
-<keymap version="1" name="MattJW-PyCharm-1-0-0" parent="Mac OS X 10.5+">
+<keymap version="1" name="MattJW-PyCharm" parent="Mac OS X 10.5+">
   <action id="Arrangement.Alias.Rule.Match.Condition.Move.Up" />
   <action id="Arrangement.Rule.Match.Condition.Move.Down" />
   <action id="Arrangement.Rule.Match.Condition.Move.Up" />
