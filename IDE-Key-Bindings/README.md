@@ -27,6 +27,8 @@ has been created.
   -  `~/Library/Preferences/PyCharmCE2019.2/keymaps`
   -  `~/Library/Application Support/JetBrains/PyCharmCE2020.1/keymaps`
 
+Find IDE settings with `bash find-ides.sh`.
+
 Instructions on importing a keymap for the first time:
 
 - In IDE, create a new keymap (any keymap) and name it as per the keymap to be imported (e.g.,
