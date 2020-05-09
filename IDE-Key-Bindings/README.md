@@ -17,20 +17,25 @@ See also key bindings sub-directories.
 
 Setup and configuration for Jetbrains products, such as PyCharm, IntelliJ IDEA, and GoLand.
 
-Where to find keymaps...
+Where to find keymaps, as follows. Note that the `keymaps` dir may not exist until a custom keymap
+has been created.
 
-- GoLand: `~/Library/Preferences/GoLand2019.3/keymaps`
+- GoLand:
+  -  `~/Library/Preferences/GoLand2019.3/keymaps`
+  -  `~Library/Application Support/JetBrains/GoLand2020.1/keymaps`
 - PyCharm: `~/Library/Preferences/PyCharmCE2019.2/keymaps`
 
 Instructions on importing a keymap for the first time:
 
-- In IDE, create a new keymap (any keymap) and name it as per the keymap to be imported (e.g., `MattJW-GoLand`). This is a temporary, dummy keymap.
+- In IDE, create a new keymap (any keymap) and name it as per the keymap to be imported (e.g.,
+  `MattJW-GoLand`). This is a temporary, dummy keymap.
 - Close IDE.
 - Find the dummy keymap in the `keymaps` dir. Replace it with the keymap being imported.
 
 Other JetBrains dirs...
 
 - `~/Library/Application Support/PyCharmXX`: catalogue with plugins
+- `~/Library/Application Support/JetBrains/GoLand2020.1`
 - `~/Library/Preferences/PyCharmXX`: the rest of the configuration settings
 
 ### VS Code
