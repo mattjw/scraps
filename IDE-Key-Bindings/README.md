@@ -23,7 +23,9 @@ has been created.
 - GoLand:
   -  `~/Library/Preferences/GoLand2019.3/keymaps`
   -  `~/Library/Application Support/JetBrains/GoLand2020.1/keymaps`
-- PyCharm: `~/Library/Preferences/PyCharmCE2019.2/keymaps`
+- PyCharm:
+  -  `~/Library/Preferences/PyCharmCE2019.2/keymaps`
+  -  `~/Library/Application Support/JetBrains/PyCharmCE2020.1/keymaps`
 
 Instructions on importing a keymap for the first time:
 
