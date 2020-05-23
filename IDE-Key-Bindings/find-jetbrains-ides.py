@@ -7,6 +7,7 @@ from typing import Optional, Iterable
 import sys
 from collections import defaultdict
 import difflib
+import subprocess
 
 
 MAC_SETTINGS_DIRS = [
@@ -137,7 +138,16 @@ def main():
 
         print()
         print("Open in VS Code...")
-        print(f'code -d "{git_keymap_file}" "{jetbrains_keymap_file}"')
+        args = [
+            'code',
+            '-n',
+            '-d',
+            f"{git_keymap_file}",
+            f"{jetbrains_keymap_file}",
+        ]
+        print(" ".join(args))
+        if jetbrains_keymap_file.exists():
+            subprocess.run(arg.strip('"') for arg in args)
 
 
 if __name__ == "__main__":
