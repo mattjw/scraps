@@ -72,6 +72,10 @@
   <action id="RemoteHostView.EditSource">
     <keyboard-shortcut first-keystroke="f4" />
   </action>
+  <action id="RenameElement">
+    <keyboard-shortcut first-keystroke="shift f6" />
+    <keyboard-shortcut first-keystroke="meta alt j" />
+  </action>
   <action id="ResetColumnsWidth" />
   <action id="ResizeToolWindowDown" />
   <action id="ResizeToolWindowUp" />
@@ -98,6 +102,7 @@
   <action id="Sql.EditParameter">
     <keyboard-shortcut first-keystroke="f4" />
   </action>
+  <action id="SurroundWithLiveTemplate" />
   <action id="TableResult.GrowSelection" />
   <action id="Vcs.EditSource">
     <keyboard-shortcut first-keystroke="f4" />

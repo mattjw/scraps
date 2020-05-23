@@ -27,7 +27,7 @@ has been created.
   -  `~/Library/Preferences/PyCharmCE2019.2/keymaps`
   -  `~/Library/Application Support/JetBrains/PyCharmCE2020.1/keymaps`
 
-Find IDE settings with `bash find-jetbrains-ides.sh`.
+Compare keymaps between these git-versioned  with `bash compare-jetbrains-keymaps.sh`.
 
 Instructions on importing a keymap for the first time:
 
@@ -60,3 +60,7 @@ the given keybinding.
 | Duplicate line up/down | alt + shift + down-arrow (or up-arrow) | default  | "Duplicate Line or Selection" |  |
 | Reformat code | alt cmd l |   | default |  |
 | Move caret to counterpart brace | ctrl m | ? | default |
+
+JetBrains: cmd-alt j k l
+
+- Refactor name (Refactor -> Rename): cmd alt j
