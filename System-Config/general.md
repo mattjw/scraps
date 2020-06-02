@@ -341,7 +341,9 @@ Zotero
 * ~~**Add standard user account to sudoers**. `sudo visudo`.~~
 * **Screen hotspots**. `Mission Control -> Hot Corners`. Top right: Display to Sleep. Bottom right: Desktop.
 * **Better trackpad**. Lookup = Off. Secondary Click = Two-Fingers. Tap to Click = Off. Silent Clicking = True. Force Click & Haptic Feedback = Off.
-* **No annoying text substitutions**. Open TextEdit. Preferences. Options: disable Correct Spelling Automatically; disable Smart Quotes, Smart Dashes, Text Replacement
+* **No annoying text substitutions**. 
+  * Open TextEdit. Preferences. Options: disable Correct Spelling Automatically; disable Smart Quotes, Smart Dashes, Text Replacement
+  * Sys Prefs -> Keyboard -> Text. Disable "Add full stop with double-space".
 * **Better Desktop icons**. Show View Optons... Icon Size = 32x32; Grid Spacing = ???; Text Size = 10; Sort By = Snap to Grid
 * **Finder setup**...
   * Open directory. Right click. Show view options... Always open in list view; Browse in list view; Show columns = Kind; Sort By = Kind. Use as Defaults.
