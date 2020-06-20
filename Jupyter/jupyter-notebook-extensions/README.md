@@ -1,8 +1,8 @@
-Configure Jupyter notebook with extensions.
+# Configure Jupyter notebook with extensions
 
 Setup...
 
-```
+```bash
 pipenv --three
 pipenv install jupyter
 
@@ -13,7 +13,7 @@ pipenv run jupyter contrib nbextension install --sys-prefix
 
 You can install a GUI to select extensions...
 
-```
+```bash
 pipenv install jupyter_nbextensions_configurator
 pipenv run jupyter nbextensions_configurator enable --sys-prefix
 # visit http://localhost:8888/nbextensions
@@ -21,7 +21,7 @@ pipenv run jupyter nbextensions_configurator enable --sys-prefix
 
 Enable chosen extensions...
 
-```
+```bash
 pipenv run jupyter nbextension enable ruler/main
 pipenv run jupyter nbextension enable help_panel/help_panel
 pipenv run jupyter nbextension enable notify/notify
@@ -37,7 +37,6 @@ See [here](https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/nbexten
 
 Start notebook...
 
-```
+```bash
 pipenv run jupyter notebook
 ```
-
