@@ -4,9 +4,7 @@ name: Lint code base
 # https://github.com/github/super-linter/
 
 on:
-  push:
-    branches-ignore:
-      - 'master'
+  push
 
 jobs:
   build:
