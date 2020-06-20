@@ -1,17 +1,15 @@
 # System and software
 
-
 ## git
 
-```
+```bash
 git config --global user.email "mattjw@mattjw.net"
 git config --global user.name "Matt J Williams"
 ```
 
-
 ## homebrew
 
-Install: 
+Install:
 
 * ~~Promote primary (day-to-day) user account to admin account (SysPrefs).~~
 * `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
@@ -20,7 +18,6 @@ Install:
 Useful utils:
 
 * `brew install jq`
-
 
 ## fish and iTerm 2
 
@@ -45,7 +42,7 @@ iTerm 2:
 * Preferences -> General. UNTICK Confirm Quit iTerm2.
 * Add key bindings (Preferences -> Profiles -> Keys -> Add (+) New Binding) ([see also](https://apple.stackexchange.com/a/204802)):
   * Delete to beginning of word: Action = `Send Hex Code`. Value = `0x17`. Shortcut = `Option + Delete`.
-* Increase cursor speed (system-wide setting): 
+* Increase cursor speed (system-wide setting):
   * System Preferences -> Keyboard -> Keyboard Tab -> Keyboard Repeat = Rung 8 of 8 (right-most) (default is 7 of 8 rungs)
   * System Preferences -> Keyboard -> Keyboard Tab -> Delay Until Repeat = Rung 4 of 6 (default is 3 of 6 rungs)
 * Disable "Copy to pasteboard on selection".
@@ -70,7 +67,8 @@ Config:
 [Abbreviations](https://fishshell.com/docs/current/commands.html#abbr):
 
 Create abbreviations. fish will persist these without needing an explicit save step.
-```
+
+```fish
 abbr --add dc docker-compose
 abbr --add d docker
 abbr --add k kubectl
@@ -94,15 +92,13 @@ Shortcut to open iTerm at Finder directory:
 
 * `Sys Prefs -> Keyboard -> Shortcuts -> Services -> Files and Folders -> New iTerm2 Window Here`. Shorcut: alt shift cmd t
 
-
 ## vim
-See: `home/.vimrc`.
 
+See: `home/.vimrc`.
 
 ## tmux
 
 TODO
-
 
 ## python3
 
@@ -110,13 +106,12 @@ TODO
 brew install python3
 ```
 
-```
+```bash
 which pip3
   /usr/local/bin/pip3
 which python3
   /usr/local/bin/python3
 ```
-
 
 ## python: pyenv and pipenv
 
@@ -128,7 +123,7 @@ Do this first, before installing pipenv.
 
 Preempt the `zipimport.ZipImportError: can't decompress data; zlib not available` problem:
 
-```
+```text
 $ brew install zlib
 $ brew info zlib
 export LDFLAGS="-L/usr/local/opt/zlib/lib"
@@ -170,7 +165,7 @@ pip install 'pipenv>=2018.11.26'
 
 Usage:
 
-```
+```bash
 pipenv --three  # initialise a project with Python 3
 echo "print('hello')" > main.py
 pipenv run python main.py
@@ -178,38 +173,41 @@ pipenv run python main.py
 
 To enter a shell for this env:
 
-```
+```bash
 pipenv shell
 ```
 
-
 ## python
 
-_Deprecation notice: These instructions may be redundant. The pyenv and pipenv 
+_Deprecation notice: These instructions may be redundant. The pyenv and pipenv
 instructions (above) take precedence._
 
 Built-in Python:
-```
+
+```text
 /System/Library/Frameworks/Python.framework/Versions/2.7/bin/python2.7
-Python 2.7.10 (default, Oct 23 2015, 19:19:21) 
+Python 2.7.10 (default, Oct 23 2015, 19:19:21)
 [GCC 4.2.1 Compatible Apple LLVM 7.0.0 (clang-700.0.59.5)] on darwin
 ```
 
 Python Software Foundation release (https://www.python.org/downloads/mac-osx/):
-```
+
+```text
 /Library/Frameworks/Python.framework/Versions/2.7/bin/python
-Python 2.7.12 (v2.7.12:d33e0cf91556, Jun 26 2016, 12:10:39) 
+Python 2.7.12 (v2.7.12:d33e0cf91556, Jun 26 2016, 12:10:39)
 [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
 ```
 
 pip bundled with PSF release:
-```
+
+```text
 which pip
 /Library/Frameworks/Python.framework/Versions/2.7/bin/pip
 ```
 
 If pip not included by default:
-```
+
+```text
 curl https://bootstrap.pypa.io/get-pip.py > get-pip.py
 python get-pip.py --user
 ```
@@ -218,22 +216,22 @@ python get-pip.py --user
 
 Then generic pipeline...
 
-```
+```bash
 pip install --user virtualenv
 # or:  ~/Library/Python/2.7/bin/pip  install --user virtualenv
 ```
 
-```
+```bash
 virtualenv venv
 # or: python ~/Library/Python/2.7/lib/python/site-packages/virtualenv.py venv
 ```
 
-```
+```bash
 source venv/bin/activate
 which pip python
 ```
 
-```
+```bash
 # hack to switch to pip3 (optional): alias pip=pip3
 
 pip install requests publicsuffix2 urllib3 flask beautifulsoup4 scrapy
@@ -255,12 +253,12 @@ pip install python-igraph
 ```
 
 Cartopy (http://louistiao.me/posts/installing-cartopy-on-mac-osx-1011/)...
-```
+
+```bash
 brew install geos
 brew install proj
 pip install pyproj cartopy
 ```
-
 
 ## OS X apps
 
@@ -274,7 +272,7 @@ Core:
 
 All:
 
-```
+```text
 Atom
 Android SDK
 Android Studio
@@ -352,7 +350,7 @@ Zotero
   * Finder Preferences: New Finder windows show: `<user>`
   * Always show extensions: `Finder -> Preferences -> Advanced -> Show all filenane extensions`. And: Disable `Show warning before changing an extension`.
   * Perform search from current directory: `Finder -> Preferences -> Advanced -> When performing a search -> Search the current folder`.
-  * Configure sidebar items: `Finder -> Preferences -> Sidebar`. Disable: iCloud Drive; AirDrop; Documents. Enable: <user> (and any other defaults).
+  * Configure sidebar items: `Finder -> Preferences -> Sidebar`. Disable: iCloud Drive; AirDrop; Documents. Enable: `<user>` (and any other defaults).
 * **Increase display DPI**. Sys Pref -> Display -> Scaled. More density than default.
 * **Add more desktops**. Three-finger gesture zoom-out. `+` button.
 * **Disable two-finger left/right gesture for Chrome back/forward**:
@@ -361,11 +359,9 @@ Zotero
 * **Better dock**. Size 30%. Magnification 65%.
 * **Require unlock on screensaver**: `Security & Privacy -> General` Require password immediately after sleep or screensaver begins.
 
-
 ## Google Chrome
 
 * Extensions: OneTab; Tabli
-
 
 ## Spectacle
 
@@ -378,7 +374,6 @@ Recall the shortcuts:
 * Left: Cmd-Alt left-arrow
 * ...
 
-
 ## Moom
 
 DEPRECATED: Now using Spectacle instead of Moom.
@@ -390,8 +385,7 @@ DEPRECATED: Now using Spectacle instead of Moom.
 
 For direct link to file (no need to use Docker Hub), see [this](https://github.com/docker/docker.github.io/issues/7179) github issue.
 
-
-# Misc. software tips and tricks
+## Misc. software tips and tricks
 
 * Dropbox manual copy.
   * Install Dropbox. Sign-in.
@@ -400,7 +394,6 @@ For direct link to file (no need to use Docker Hub), see [this](https://github.c
   * Delete Dropbox metadata files so they'll be re-created. (`.dropbox` and `.dropbox.cache`.) Delete `~/Dropbox`, replace it with `~/Dropbox2`.
   * Re-open app. Resume syncing.
 
-
-# Hardware / accessories
+## Hardware / accessories
 
 * Camera slider
