@@ -63,6 +63,7 @@ fish:
 
 Config:
 
+* See `home/`
 * ~~Automatically pull in env vars from bash: Run `omf install foreign-env`. Add the line `fenv source ~/.bash_profile` to `~/.config/fish/config.fish`.~~
 * Add line `echo "<config.fish>"` to `~/.config/fish/config.fish`.
 
@@ -95,7 +96,7 @@ Shortcut to open iTerm at Finder directory:
 
 
 ## vim
-See: `.vimrc`.
+See: `home/.vimrc`.
 
 
 ## tmux
