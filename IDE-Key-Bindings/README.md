@@ -1,9 +1,10 @@
-Notes on keybindings. Serves a few purposes:
+# Keybindings
+
+This doc serves a few purposes:
 
 - A cheat sheet for useful commands
 - Instructions on normalising keybindings across different editors
 - Premade configuration files for keymaps
-
 
 ## General settings for each editor
 
@@ -21,11 +22,11 @@ Where to find keymaps, as follows. Note that the `keymaps` dir may not exist unt
 has been created.
 
 - GoLand:
-  -  `~/Library/Preferences/GoLand2019.3/keymaps`
-  -  `~/Library/Application Support/JetBrains/GoLand2020.1/keymaps`
+  - `~/Library/Preferences/GoLand2019.3/keymaps`
+  - `~/Library/Application Support/JetBrains/GoLand2020.1/keymaps`
 - PyCharm:
-  -  `~/Library/Preferences/PyCharmCE2019.2/keymaps`
-  -  `~/Library/Application Support/JetBrains/PyCharmCE2020.1/keymaps`
+  - `~/Library/Preferences/PyCharmCE2019.2/keymaps`
+  - `~/Library/Application Support/JetBrains/PyCharmCE2020.1/keymaps`
 
 Compare keymaps between these git-versioned  with `bash compare-jetbrains-keymaps.sh`.
 
