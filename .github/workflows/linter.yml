@@ -2,6 +2,9 @@
 
 name: Lint code base
 # https://github.com/github/super-linter/
+# Want to customise the linting rules for
+# individual linters? See yaml files in:
+#   .github/linters
 
 on:
   push
@@ -17,5 +20,5 @@ jobs:
       - name: Lint Code Base
         uses: docker://github/super-linter:v2.1.0
         env:
-          VALIDATE_ALL_CODEBASE: true  # switch to false afterwards
+          VALIDATE_ALL_CODEBASE: false  # Lint edited files only
           #VALIDATE_PYTHON: false
