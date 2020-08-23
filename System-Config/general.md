@@ -361,7 +361,10 @@ Zotero
 
 ## Google Chrome
 
-* Extensions: OneTab; Tabli
+* Extensions:
+  * ~~OneTab~~
+  * ~~Tabli~~
+  * [I don't care about cookies](https://chrome.google.com/webstore/detail/i-dont-care-about-cookies/fihnjjcciajhdojfnbdddfaoknhalnja?hl=en) (Read and write all data on pages.)
 
 ## Spectacle
 
