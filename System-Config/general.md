@@ -7,6 +7,11 @@ git config --global user.email "mattjw@mattjw.net"
 git config --global user.name "Matt J Williams"
 ```
 
+```bash
+echo ".DS_Store" >> ~/.gitignore
+git config --global core.excludesfile ~/.gitignore
+```
+
 ## homebrew
 
 Install:
