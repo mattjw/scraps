@@ -12,6 +12,13 @@ echo ".DS_Store" >> ~/.gitignore
 git config --global core.excludesfile ~/.gitignore
 ```
 
+## github (github CLI)
+
+```bash
+brew install gh
+gh auth login
+```
+
 ## homebrew
 
 Install:
