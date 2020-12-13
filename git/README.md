@@ -10,4 +10,7 @@ Search the contents of all files that have ever existed in git for a string:
 
 ```bash
 git log --summary -S<string> [<path/to/file>] [--since=2009.1.1] [--until=2010.1.1]
+
+# example...
+git log --summary -S "search-frontend" --since=2019.01.01 --until=2019.12.91
 ```
