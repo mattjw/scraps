@@ -2,7 +2,7 @@
 
 ## git
 
-More info on git, including common git tricks, found [here](../git).
+My own extra info on git, including common git tricks, found [here](../git).
 
 User config:
 
