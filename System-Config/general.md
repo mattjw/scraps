@@ -2,10 +2,16 @@
 
 ## git
 
+More info on git, including common git tricks, found [here](../git).
+
+User config:
+
 ```bash
 git config --global user.email "mattjw@mattjw.net"
 git config --global user.name "Matt J Williams"
 ```
+
+Universal gitignore:
 
 ```bash
 echo ".DS_Store" >> ~/.gitignore
