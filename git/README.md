@@ -1,4 +1,8 @@
-# git configuration
+# git usage
+
+See also my [system config](../System-Config/general.md).
+
+I'm trying to keep this file here more about tips, tricks, and usage.
 
 ## Managing params
 
